@@ -1,0 +1,158 @@
+//---------------------------Communication--------------------------
+
+//Alright, after many years, I've finally figured out what the deal is with this file. Basically, it handles inter-ghost communication. Some ghosts have a feature where they will speak to your ghost, usually saying "hello" or "hi" or something like that. This file mostly handles how your ghost will reply when another ghost talks to them like that. While not every ghost has that functionality, you might as well put in one line or two just in case. It won't take you any time at all.
+//If you're interested in having your ghost speak to other ghosts through a menu option or something like that, I think that's a bit outside the scope of this template for now, but I'm sure I'll eventually write up how to do it on the walkthrough page in one of the coding sections.
+//Some of you may be wondering about the parts for talking to the user. I can't track this down anywhere in the files, and I think it refers to a deprecated functionality to have the user teach your ghost things via the teach box. Basically just ignore it, it will probably never come up.
+
+//As usual, refer to the walkthrough page for info on Sakurascript formatting and all that!
+
+
+//--OnCommunicate
+
+//OnCommunicate is called when your ghost is either targeted by another ghost for a conversation, or when your ghost is targeting another ghost for conversation. There's no need to touch any of this.
+OnStartTalking
+{
+	SpokeFirst = 1 //setting a flag
+	OnCommunicate
+}
+
+OnCommunicate
+ {
+	if reference0 == "user" || reference0 == "User"
+ 	{
+		//---- answering the user
+ 		ReplyToUser
+	}
+ 	else
+	{
+ 		//---- answering another ghost
+		ReplyToGhost
+ 	}
+}
+
+//Just ignore this.
+ReplyToUser
+{
+	TalkToUser
+}
+
+ReplyToGhost //I'll..... add a friendship check to this later......... or maybe I'll give that its own function, that would be cleaner....
+{
+	if SpokeFirst == 1 //======================Starting a conversation=======================
+	{
+		SpokeFirst = 0
+		if ghostexcount > 0 //Checking to see if there's another ghost
+		{
+			_number = RAND(ghostexcount) // This checks the number of other ghosts summoned and chooses a random number based on it
+			--
+			checkname = "%(ghostexlist[_number])" // This grabs the reference name of the ghost to check against known names. It should be the sakura name.
+			--
+			// Checking the selected loaded ghost's name vs known names to comment on them
+			case checkname
+			{
+				when "Azura" //=======Azura========
+				{
+					res_reference0 = "Azura"
+					"\s[103]Hey %(res_reference0),\w4\s[0] what are you doing?\e"
+				}
+				when "Gaster" //=========Zarla's Gaster=======
+				{
+					res_reference0 = ""
+					"\0\s[200].\w4.\w4.\w8\w8\n\n* (Doesn't seem like he wants to talk to %(checkname).)"
+				}
+				when "Temmie"
+				{
+					res_reference0 = "Temmie"
+					"\0\s[104]Hello Temmie!\w8\w8\e"
+				}
+				others //======Any ghost he doesn't know========
+				{
+					AlreadyResponded = 1
+					res_reference0 = checkname
+					"\0\s[104]Hey,\w4 %(res_reference0).\w8\w8\e"
+				}
+			}
+		}
+		else //If there is no other ghost
+		{
+			"\0\s[106]Ah, I don't think anyone else is here, kiddo.\e"
+		}
+	}
+	else //===========================Replying to a conversation========================
+	{
+		speech = TOLOWER("%(reference1)")
+		if reference0 == "Azura" //=======Conversations with Azura=========
+		{
+			if "currently playing" _in_ speech //If she's playing music, check to see if he recognizes the song
+			{
+				if "friends" _in_ speech
+				{
+					"\0\s[104]Oh neat,\w4 I like that one.\e"
+					res_reference0 = ""
+				}
+				elseif "let down" _in_ speech
+				{
+					"\0\s[106]Ah,\w4 that's kind of a sad one isn't it?\e"
+					res_reference0 = ""
+				}
+
+				else //If he doesn't recognize the song
+				{
+					speech = REPLACE(speech,"* i'm currently playing ","") //Removes Azura's dialogue
+					//firstpart = SPLIT(speech,"\e")[0]
+					//secondpart = SPLIT(speech,"\e")[1]
+					
+					if speech _in_ AzuraSongList //Check to see if Azura has played this song for him before
+					{
+						res_reference0 = ""
+						"\0\s[104]Oh yeah,\w4 you were playing this one before,\w4 weren't you?\e"
+					}
+					elseif speech _in_ SongList //Check to see if the user has played this song for him before
+					{
+						res_reference0 = ""
+						"\0\s[104]Oh yeah, I think %(username) has played this one for me before.\e"
+					}
+					else //Song isn't in memory
+					{
+						res_reference0 = ""
+						AzuraSongList += "%(speech)\n-"
+						"\0\s[0]Oh,\w4\s[104] I haven't heard this one before.\e"
+					}
+				}
+			}
+			else
+			{
+				if "nothing in particular" _in_ speech //Azura tells him that she isn't doing anything/playing music
+				{
+					"\0\s[0]Oh,\w4 \s[104]alright then.\e"
+					res_reference0 = ""
+				}
+				else //If she's saying hello/something he doesn't recognize
+				{
+					res_reference0 = ""
+					"Hey there, %(checkname).\e"
+				}
+			}
+		} //==========End conv with Azura===========
+		elseif reference0 == "Temmie"
+		{
+			res_reference0 = ""
+			"\0\s[106]Sorry,\w4 I don't have any muns or flakes with me.\w8\w8\s[104] Maybe next time, huh?\e"
+		}
+		else //=========Ghosts he doesn't know==========
+		{
+			if AlreadyResponded == 0
+			{
+				AlreadyResponded = 1
+				res_reference0 = reference0
+				"\0\s[104]Hey there.\w8\e"
+			}
+			else
+			{
+				AlreadyResponded = 0
+				res_reference0 = ""
+				"\s[0]Hope you're doing well.\e"
+			}
+		}
+	}
+}

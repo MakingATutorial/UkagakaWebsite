@@ -1,0 +1,185 @@
+﻿//---------------------------Envelopes--------------------------
+//This .dic file is probably one of the simplest you will have to edit, and in fact, if the way it works doesn't appeal to you, you can completely ignore it if you like!
+//Basically, what this file does is set up certain things that I believe are called envelopes or SakuraScriptEnv on the CROW-SSP Dictionary site (which I link to a few times throughout the walkthrough), but I've always kind of thought of them as variables. Envelopes is probably a less confusing name though.
+//Essentially, what this file is for is for creating lists populated with items, and storing them in a word that can later be called during dialogue. If you've read the walkthrough or gone through any of the other .dic files, you've probably seen these before. They are always preceded with a % sign and have a word in parentheses (well, almost always) afterwards. %(username) is one, which displays the user's name, and %(heshe) is another, which displays the right pronoun depending on what the user selected in bootend.dic or menu.dic. Other ones you might not have seen include %(passmin), which shows how many minutes have passed since the ghost was started, %(screenheight) which shows the height of the display they're currently on, and %(keroname) for the name of the second character, among many, many others. Many of these are predefined by the AYA scripting and will be listed on the CROW-SSP site mentioned above, and many of them you will never have to use. By far the ones you will be using the most will be %(username) and the pronoun ones, and those are the only ones you'll have to worry about normally.
+
+//So where does this file come in? Well, you can define your own envelopes if you want! Which means essentially that you can create a list of items and attach it to almost any word you want. Here's an example.
+
+ingredients
+{
+	"cilantro"
+	"basil"
+	"lemon pepper"
+	"cloves"
+	"chives"
+	"butter"
+	"salt"
+	"paprika"
+	"sugar"
+	"cinnamon"
+	"pepper"
+	"lemon"
+	"orange zest"
+	"lemon zest"
+	"cumin"
+	"mint"
+	"garlic"
+	"curry powder"
+	"chili powder"
+	"dried peppers"
+	"nutmeg"
+	"ginger"
+	"mustard"
+	"tumeric"
+	"thyme"
+	"rosemary"
+	"allspice"
+	"dill weed"
+	"horseradish"
+	"oregano"
+	"sesame seeds"
+	"peppermint"
+	"peppers"
+	"sage"
+	"vanilla"
+	"wasabi"
+	"lime"
+}
+
+fruveg
+{
+	"grapefruit"
+	"apples"
+	"pears"
+	"grapes"
+	"oranges"
+	"bananas"
+	"tomatoes"
+	"cucumbers"
+	"avocado"
+	"pickles"
+	"cherries"
+	"brocolli"
+	"lettuce"
+}
+
+bakedgoods
+{
+	"bread"
+	"cookies"
+	"cupcakes"
+	"pie"
+	"cheesecake"
+	"dinner rolls"
+	"breadsticks"
+	"biscuits"
+	"muffins"
+	"brownies"
+	"cake"
+	"strudel"
+	"cinnamon rolls"
+	"turnovers"
+}
+
+family
+{
+	"anWD"
+	"anDings"
+	"anWings"
+	"anBarcode"
+	"anBlue"
+	"anAbbi"
+	"anRosie"
+	"anRoman"
+	"anCambria"
+	"anTriton"
+	"anLulo"
+	"anAzo"
+	"anSigil"
+	"anElko"
+}
+
+usersfolder
+{
+	"start bar"
+	"documents folder"
+	"pictures folder"
+	"music folder"
+	"games folder"
+}
+
+//This envelope in particular I think is fun. You can use this in dialogue to pretend like your ghost is looking through your user's files!
+
+colormod
+{
+	"light "
+	"dark "
+	"bright "
+	"soft "
+	""
+	""
+	""
+}
+
+color
+{
+	"red"
+	"orange"
+	"yellow"
+	"green"
+	"cyan"
+	"blue"
+	"purple"
+	"pink"
+	"gray"	
+}
+
+pattern
+{
+	{
+		""
+	}
+	{
+	" with "
+	--
+	"a cutesy heart print"
+	"a zany bone pattern"
+	"an adorable cat-and-dog print"
+	"a cute pawprint pattern"
+	"a soothing plaid pattern"
+	"crazy polka dots"
+	"simple stripes"
+	"a mesmerizing galaxy print"
+	}
+}
+
+animal //plushes -- I've excluded some so that I could write specific dialogue about them
+{
+	"dog"
+	"elephant"
+	"turtle"
+	"tortoise"
+	"fish"
+	"bird"
+	"dragon"
+}
+
+
+purple
+{
+	"\f[color,183,129,227]"
+}
+
+default
+{
+	"\f[color,default]"
+}
+
+
+ //**** Don't touch this ***************************************************************
+ //This is code stuff and nothing for you to worry about, just save the .dic and move on! You're done!
+ 
+ On_\person
+{
+ 	person
+}

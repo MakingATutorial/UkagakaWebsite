@@ -1,0 +1,1861 @@
+﻿//---------------------------AI Talk--------------------------
+
+
+AiTalk
+ {
+	if RAND(100) < communicateratio
+ 	{
+ 		StartCommunicate
+	}
+ 	else
+	{
+ 		if mikireflag == 0
+		{
+			if CHAIN.IDName == "" {
+ 				lastTalk = RandomTalk
+			}
+			else {
+				lastTalk = ChainTalk
+			}
+			lastTalk
+		}
+ 		else
+		{ 
+		MikireTalk
+ 		}
+	}
+ }
+
+
+
+
+RandomTalk : nonoverlap
+{
+	if lookingatphone == 1 //I've stuck this up here so it's got a very high chance of being called. Might shuffle around later.
+	{
+		{
+			lookingatphone = 0
+			"\0\s[1090]* (You ask what he's up to on his phone.)\w8\w8\n\n"
+			--
+			"\s[1030]Ah-\w4 uh,\w4 I'm just texting my anhusband.\w8\w8\s[105] He was wondering how I'm doing.\e"
+			"\s[1020]Ah,\w4 I'm just texting my parents.\w8\w8\s[107] They get worried if I'm gone too long.\e"
+		}
+		{
+			"\0\s[1090]\i[2]Heh... anBlue...\e"
+			"\0\s[1090]\i[1]Aww, that's cute...\e"
+		}
+	}
+	if LV == 0 //Friendship routes
+	{
+		//====================================================Full Trust========================================================
+		
+		if love >=150 //Full friendship -- ugh I moved everything around again and copied the same dialogue into the different ifs... not the cleanest, but at least it'll all get called with the correct probabilities now.
+		{
+			"\0\s[102]* (Shaped like a friend.)\e"
+			"\0\s[102]* (He hums a quiet tune.)\e"
+			"\0\s[200]* (He's carefully taking in your desktop.)\w8\w8\n\nIt's a bit dusty in here, isn't it..?\w8\s[202] Would you mind if I cleaned this place up a bit?\e"
+			"\0\s[1070].\w8.\w8.\w8Did I leave the oven on..?\w8\w8\n\n\s[200]No,\w4 I know I didn't...\e"
+			"\0\s[205]I've never been much good with computers.\w8\w8\s[202] Are people supposed to be able to live inside them?\e"
+			"\0\s[1070].\w8.\w8.\w8So does this make me a 'computer person' technically?\e"
+			"\0\s[0]So uh, what kind of stuff do you get up to out there?\w8\w8\s[106] I can't really tell from this side of the screen.\e"
+			"\0\s[208]It's very...\w8\w8 flat\w4 here.\w8\w8\s[206] I'm not really sure how to describe it...\e"
+			"\0\s[106]What are all of these icons, anyways?\w8\w8\s[202] I only know a couple of apps on my phone,\s[205] computers are mostly a mystery to me.\e"
+			"\0\s[202]It's uh...\w8\w8\s[101] really interesting here.\w8\w8\s[208] Definitely not what I would've thought.\e"
+			"\0\s[208]%screenwidthx%screenheight...\w8\w8\s[202] It sounds like a lot, but at this size I can see every individual pixel.\e"
+			"\0\s[110]Someone told me there's another kind of computer,\w4\s[106] named after apples or something?\w8\w8\w8\s[208]\n\nIs this one of those?\w8\w8 I'm not sure how to tell the difference...\e"
+
+			
+			//========ifs========
+			if nowshell == "red_hoodie"
+			{
+				"\0\s[102]* (You wonder if he ever takes that hoodie off...)\e"
+				"\0\s[102]* (He seems very comfy in his red hoodie.)\e"
+			}
+			if passhour >= 1
+			{
+				if timeslot == "evening"
+				"\0\s[102]Heh, I bet anRosie's gotten into the cookie jar by now...\w8\w8\s[106] That girl's got a big sweet tooth,\w4\s[107] and if I'm not there to stop her there might not be any cookies left.\e"
+			}
+			if passhour >= 20
+			{
+			"\0\s[106]Hey uh,\w4 your %(usersfolder) was a little messy, so I straightened it up.\w8\w8\s[107] I hope that's alright, I'm kind of a compusive cleaner.\e"
+				
+			"\0\s[202]Uh...\w8 %(username)?\w8\w8 I hope you don't mind,\w3 but \s[0]I was wandering around your %(usersfolder) and found some %(ingredients)...\w8\w8 You mind if I keep this..?\e"
+		
+			"\0\s[207]* (He yawns, long and slow...)\e"
+		
+			"\0\s[200]I wonder how the kids are doing...\e"
+			
+			"\0\s[206]* (He's mumbling to himself.)\w8\w8\n\n%(passhour) hours...\e"
+			}
+			
+			if LVCheck == 1 && broken == 0 //runs at any time that you know his secrets but he's not broken
+			{
+				"\0\s[204]* (He's taking deep,\w2 slow breaths.)\e"
+				"\0\s[200]* (He looks wistful.)\w8\w8\w8\n\n\s[204]* (You wonder if he's thinking about the past again...)\e"
+			}
+			if snagged > 0 //any time that you've snagged his head and you're not on a negative route
+			{
+				"\0\s[200]* (He sighs and rubs his head a little.)\w8\w8\n\n* (You wonder if it still hurts from when you snagged it...)\e"
+			}
+			if SeePC == "ON"
+			{
+				OnWhatreYouUpTo
+			}
+			
+			
+			
+			//=====About family members=====
+			if askedaboutwd == 1
+			{
+				
+			}
+			if askedaboutdings == 1
+			{
+				
+			}
+			if askedaboutwings == 1
+			{
+				
+			}
+			if askedaboutbarcode == 1
+			{
+				
+			}
+			if askedaboutbluejeans == 1
+			{
+				"\0\s[200]anBlue gets really worried while I'm away.\w8\w8\s[202] I've tried to tell him it's alright here,\w4\s[200] but he worries when he can't be with me.\e"
+			}
+			if askedaboutabbi == 1
+			{
+				if season == "Summer"
+				{
+					"\0\s[104]anAbbi really likes this time of year, the warm sun is one of his favorite things.\w8\w8\s[106] Sometimes we have to remind the little ones not to spray him with their squirt guns, though.\w8\w8\n\n\s[104]They'll learn with time.\e"
+				}
+			}
+			if askedaboutrosie == 1
+			{
+				
+			}
+			if askedaboutroman == 1
+			{
+				
+			}
+			if askedaboutcambria == 1
+			{
+				
+			}
+			if askedabouttriton == 1
+			{
+				
+			}
+			if askedaboutlulo == 1
+			{
+				if day == 13 || day == 27 //There's no rhyme or reason to these days, I just want him to only comment on this once in a while, and not tell you about this every single day... I might change this later idk. Would love to implement a system of variables that randomly shift and track the goings on in his life...
+				"\0\s[200]anLulo's been sleeping longer the past few days...\w8\s[300] It's probably nothing, but...\w8\w8\n\n\s[302]* (He tries to hide a shiver,\s[200] but you catch it anyways.)\e"
+			}
+			if askedaboutazo == 1
+			{
+				"\0\s[104]Every time I come home from here, anAzo asks me all about what happened and what I saw.\w8\w8\s[205] I think he'd tag along himself if he could figure out how.\e"
+			}
+			if askedaboutsigil == 1
+			{
+				
+			}
+			if askedaboutelko == 1
+			{
+				
+			}
+			
+			
+			
+			
+			//=====Time of day, day of week, months, seasons, etc=====
+			
+			//=====Seasons=====
+			if season == "Spring"
+			{
+				"\0\s[205]I like cold weather the best,\w4\s[104] but it's always so cheery to see new flowers and plants budding.\w8\w8\n\n\s[106]Unless you're allergic,\w4 I suppose.\w8\w8 I hope you're doing alright, %(username).\e"
+				"\0\s[205]It's planting season again.\w8\w8\s[102] I love the rhythm of the seasons up on the surface,\w4 it's comforting.\e"
+				"\0\s[104]anTriton seems to be perking up lately.\w8\w8\s[205] The new plants budding always seems to cheer him up.\w8\w8\n\n\s[106] I can't really blame the kid for not liking winter,\w4 being made of water and all.\e"
+					
+			}
+			if season == "Summer"
+			{
+				"\0\s[106]Is it hot out where you live?\w8\w8 We've been pushing 100 degrees lately.\w8\w8\n\n\s[109]I already sleep a lot, but with all this heat I end up sleeping most of the day away.\e"
+				"\0\s[205]I guess on the bright side, there's more daylight at this time of year.\w8\w8\s[106] I'm not really a fan of the dark.\e"
+				"\0\s[104]One thing I will say about the warm season,\w4 it feels really good to sit in the sun and let it soothe the aches in my bones.\e"
+				
+				if knowaboutfamily == 1
+				{	
+					"\0\s[104]It's been really lively at home lately, with all the kids home from school.\w8\w8\s[205] I guess that's one good thing about this time of year.\e"
+					"\s[104]All the littler kids like this time of year.\w8\w8\s[0] Trips to the pool or the beach, running through sprinklers, water balloon fights...\w8\w8\n\n\s[106]Or maybe they just like not being in school.\e"
+				}
+			}
+			if season == "Autumn"
+			{
+				"\0\s[101]I don't really understand why some humans call this season autumn and some humans call it fall.\w8\w8\s[104] I think Autumn is the prettier word, very fitting for the colorful season.\e" //[Zi]Yes I'm American, yes I use autumn rather than fall, for the same reason S does. Fight me.
+				"\0\s[0]Autumn is a busy time around our house, there's a lot of work to be done harvesting crops.\w8\w8\s[104] But harvest season is also something that brings cheer,\w4 there's so much good food to be had that we have to share it around.\e"
+				if askedaboutbluejeans == 1
+				{
+					"\0\s[104]This is anBlue's favorite time of year.\w8\w8\s[105] He likes to go on long walks through the woods with me,\w4\s[106] though he usually ends up carrying me back.\e"
+					"\0\s[0]Do you like seeing the leaves change color?\w8\w8\s[104] anBlue loves it, and I have to agree.\w8\w8\n\n\s[102]It's nice to really feel the rhythm of the world.\e"
+					
+				}
+			}
+			if season == "Winter"
+			{
+				"\0\s[0]Do you like to watch the snow fall?\w8\w8\s[104] Sometimes I wonder if snowflakes are little pieces of magic falling from the sky.\e"
+				"\0\s[102]Warm weather is nice, but I really prefer cool weather.\w8\w8\s[106] I guess it might not be as pleasant if you have flesh, though...\e"
+				
+				if knowaboutfamily == 1
+				{
+					"\0\s[0]Do you have any plans this winter?\w8\w8\s[104] I'm not much for it myself, but the kids love to go sledding.\e"
+					"\0\s[0]Do you like making snowmen, %(username)?\w8\w8 \s[205]The kids love making them,\s[103] and I always make time to help.\w8\w8\s[104] It's a good bonding activity.\e"
+				}
+				if askedaboutbluejeans == 1
+				{
+				"\0\s[102]I love the cold weather.\w8\w8 Everything's so quiet and peaceful,\w4\s[105] and it's so nice to cozy up with anBlue and a good book.\e"
+				}
+			}
+			
+			//=====Months=====
+			if month == 1 //January
+			{
+				"\0\s[1070]%(year)...\w8\w8\s[107] Yep, still sounds weird.\e"
+				"\0\s[101]So how's %(year) treating you?\w8\w8\s[104] I'm always excited for the start of a new year, it feels good to look back at what we accomplished last year and set goals for the next.\e"
+				"\0\s[205]Halfway through winter...\w8\w8\s[106] Better enjoy the cold while it's here.\e"
+			}
+			if month == 2 //February
+			{
+				if day > 15
+				{
+				"\0\s[107]I've been seeing a lot more grass poking up through the snow lately.\w8\w8\s[106] Guess winter's coming to an end for the year.\e"
+				}
+				if askedaboutabbi == 1 && day < 19
+				{
+					"\0\s[0]anAbbi's birthday is coming up soon.\w8\w8\s[104] I've got some big plans this year, I hope he likes them.\e"
+				}
+			}
+			if month == 3 //March || Beginning of Spring
+			{
+				"\0\s[103]I've been seeing a lot of flowers poking up out of the ground lately.\w8\w8\s[104] It's nice to see the color returning to the world.\e"
+			}
+			if month == 4 //April
+			{
+				"\0\s[104]I've got to admit, I really do like the rainshowers that we get this time of year.\w8\w8\s[106] I'm not such a fan of big thunderstorms,\w4\s[104] but light showers are very soothing.\e"
+				"\0\s[205]The first time I heard real rain was amazing.\w8\w8\s[106] I was really confused at first,\s[107] and honestly a bit afraid,\w4\s[104] but I came around pretty quickly once I realized there was no danger.\e"
+				"\0\s[107]Sometimes we still get snow this time of year,\w4\s[202] but thankfully it doesn't stick around too long.\w8\w8\n\n\s[208]Makes it difficult to keep my garden healthy, though.\e"
+				if day == 1
+				{
+					"\0\s[106]Don't forget to be on the lookout for pranks today.\w8\w8\s[107] There are so many pranksters in our house, it's honestly a bit of a relief to be here for the moment.\e"
+				}
+			}
+			if month == 5 //May
+			{
+				if day > 20
+				{
+					"\0\s[106]Are you ready for the warm season?\w8\w8\s[107] I'm not, but I'll just have to deal with it anyways.\e"
+					"\0\s[103]The kids are starting to get excited for summer.\w8\w8\s[104] School will be letting out soon, and things are about to get a lot more lively at home.\e"
+				}
+			}
+			if month == 6 //June || Beginning of Summer
+			{
+				"\0\s[0]How are you planning to spend this summer?\w8\w8\s[105] I'm hoping I can convince anBlue to spend some time sunning with me.\e"
+			}
+			if month == 7 //July
+			{
+				
+				if day < 5
+				{
+				"\0\s[106]I think this is my least favorite time of year, fireworks are pretty and all but the loud noises have a tendency to catch me off guard.\w8\w8\s[107] Pair that with my prefering cold weather, and...\w8\w8\s[106]\n\nWell, on the plus side there's a lot of nice summer foods.\e"
+				}
+			}
+			if month == 8 //August
+			{
+				"\0\s[102]Summer's almost over now.\w8\w8\s[0] Did you make it a good one?\w8\w8\s[104] I enjoyed it, but I'm also looking forward to Autumn.\e"
+			}
+			if month == 9 //September || Beginning of Autumn
+			{
+				if day < 7
+				{
+				"\0\s[102]It's the beginning of autumn...\w8\w8\s[104] It's really nice to feel a cool breeze again, isn't it?\e"
+				}
+			}
+			if month == 10 //October
+			{
+				"\0\s[200]October is...\w8\w8 a hit or miss month to be a monster.\w8\w8\s[201] After monsters moved up to the surface, a lot of people thought Halloween was in poor taste, so they decided to make it a celebration of monsterkind's culture instead.\w8\w8\n\n\s[104]It's actually a pretty nice event, all in all.\w8\w8\s[0] The humans who participate are usually very interested in learning about our customs and way of life, and it helps to build relations between cultures.\w8\w8\n\n\s[200]But ah, there are some who hate us for 'ruining' their holiday.\w8\w8\s[201] I don't really care if they want to celebrate Halloween the way they used to, so long as they aren't trying to hurt anyone, but...\w8\w8\s[204] Some of them use it to try and make a statement about their dislike of monsters in general.\w8\w8\n\n\s[202]Hopefully one day we can convince them over to our side, it's not like we don't go door to door for candy.\e"
+				"\0\s[0]Are there a lot of trees where you live?\w8\w8\s[104] We've got a good few near us, and they look spectacular this time of year.\e"
+				if askedaboutbluejeans == 1
+				{
+					"\0\s[205]anBlue's really been enjoying the weather lately.\w8\w8\s[104] Winter is my favorite,\w4\s[105] but Autumn is just as good because I get to see anBlue smile more.\e"
+				}
+			}
+			if month == 11 //November
+			{
+				"\0\s[103]Are you looking forward to winter?\w8\w8\s[104] I sure am.\e"
+			}
+			if month == 12 //December || Beginning of Winter
+			{
+				"\0\s[106]Holiday season is upon us.\w8\w8\s[107] Honestly I find the human traditions a bit too pushy for my tastes,\w4\s[104] but I do really love the lights and sharing a simple Gyftmas with my family.\e"
+				"\0\s[205]I remember Gyftmas time back in Snowdin town...\w8\w8\s[104] It was really a sight to see.\w8\w8\s[102] All the lights strung up, illuminating the dark, light reflecting off the snow...\e"
+				"\0\s[106]This used to be one of my favorite times of year, but uh,\w4\s[107] the pushiness of the human traditions have soured it a little.\w8\w8\s[106] I've been trying to do my Gyftmas shopping well in advance so I can steer clear of stores until January.\e"
+				
+				if day < 5
+				{
+				"\0\s[104]Winter's finally here!\w8\w8\s[0] I dunno about you,\w4\s[103] but I'm pretty excited.\e"
+				}
+			}
+			
+			//=====Days of the week=====
+			if wd == "Sun"
+			{
+				
+			}
+			if wd == "Mon"
+			{
+				"\0\s[107]Monday gets a bit of a bad rap,\w4\s[106] but I don't think it's really as bad as people say.\w8\w8\s[202]\n\nMaybe because I've been a parent at home for a long time and like having a day to rest after the weekend chaos.\e"
+			}
+			if wd == "Tue"
+			{
+				"\0\s[103]How's Tuesday finding you?\w8\w8\s[0] Hopefully well?\e"
+			}
+			if wd == "Wed"
+			{
+				"\0\s[0]Halfway through another week.\w8\w8\s[106] Sure goes by fast, doesn't it?\w8\w8\s[205]\n\nBut I'm not complaining, it's another week without any major crisis,\w4\s[102] and I always try to take time and be grateful for that.\e"
+			}
+			if wd == "Thu"
+			{
+				
+			}
+			if wd == "Fri"
+			{
+				"\0\s[205]anCambria's got this thing she likes to do with her friends sometimes, it's called outfit friday.\w8\w8\s[0] They pick each other new combinations of clothes to wear for the day, sometimes sharing pieces to create something new.\n\n\w8\w8\s[107]I don't really get it,\w4\s[205] but it seems to make them happy, and I'm glad to see them having fun.\e"
+			}
+			if wd == "Sat"
+			{
+				"\0\s[103]Got any plans for the weekend?\w8\w8\s[205] I'm hoping to spend some time with anMySister, personally.\e"
+			}
+			
+			//Time of day
+			if timeslot == "midnight" //1am-4am
+			{
+				if passhour < 1
+				{
+					"\0\s[109]* (He looks really tired...)\w8\w8\n\n* (He must not be used to waking up this early.)\e"
+				}
+				if passhour >= 2
+				{
+				"\0\s[109]* (He looks really tired...)\w8\w8\n\n* (He must not be used to staying up this late.)\e"
+				}
+				"\0\s[109]* (He seems exhausted...)\e"
+			}
+			if timeslot == "earlymorning" //5am-8am
+			{
+				"\0\s[104]* (He's humming a cheery tune to himself...)\w8\w8\n\n* (He's definitely a morning person.)\e"
+				"\0\s[0]Got any big plans for today?\w8\w8\s[104] The whole day is still ahead of you.\e"
+				"\0\s[103]Is the sun up for you yet?\w8\w8\s[104] Watching the sunrise is one of my favorite things in the whole world.\w8\w8\s[205]\n\nI can't even describe how amazing it felt to see it for the first time...\e"
+			}
+			if timeslot == "morning" //9am-11am
+			{
+				"\0\s[102]This is usually one of the more peaceful times around the house...\w8\w8\s[106] Everyone else is either out working, at school, or asleep.\w8\w8\s[104] It's a nice little break after the morning rush.\e"
+				
+				if LV >= 100
+				{
+				"\0\s[107]I usually take a nap about now,\w4\s[106] so you'll have to forgive me if I fall asleep on you.\e"
+				}
+			}
+			if timeslot == "lunch" //12pm-2pm
+			{
+				"\0\s[0]Have you had lunch yet?\w8\w8\s[107] Eating regularly is important.\e"
+				"\0\s[208]Hmm...\w8\w8 anWD will probably be making lunch, since I'm not home...\w8\w8\s[107] Hopefully, anyways.\e"
+				"\0\s[206]...Hmm...\w8\w8 Maybe I should head to the store after all...\e"
+				if givenfood == 0
+				{
+					"\0\s[107]* (He's mumbling to himself...)\w8\w8\n\n* (Something about making lunch?)\e"
+					"\0\s[206]I wonder if there's anything edible around here...\e"
+				}
+				if givenfood > 0
+				{
+					"\0\s[1071]* (He's eating something...)\w8\w8\s[102]\w8\w8\w8\n\n* (Must be one of the snacks you\s[1071] gave him earlier?)\e"		
+				}
+			}
+			if timeslot == "afternoon" //3pm-5pm
+			{
+				"\0\s[206]The kids are probably getting home from school about now...\e"
+				"\0\s[106]Are you sure you want to spend the last of the daylight in front of your computer?\w8\w8\s[107] Though I guess I shouldn't judge if that's what you like to do.\e"
+				"\0\s[206]...There still might be time to stop by the store after I get home...\e"
+			}
+			if timeslot == "evening" //6pm-8pm
+			{
+				"\0\s[0]Has the sun set where you are?\w8\w8 I try to stay in or near the house after dark,\s[1010] but I do love to watch the colorful display as the sun leaves for the night.\e"
+				"\0\s[205]I don't really like to leave the house after dark,\w4\s[102] but I do find it very calming how everything gets so quiet at night.\e"
+				"\0\s[102]* (He hums a quiet lullaby.)\e"
+				"\0\s[206]...Hmm...\w8\w8 they might be closed by now...\e"
+			}
+			if timeslot == "latenight" //9pm-12am
+			{
+				"\0\s[106]It's getting pretty late, kiddo.\w8\w8 Are you planning to head to bed soon?\e"
+				"\0\s[207]* (He yawns slowly...)\w8\w8\n\n* (Maybe you should close him\s[109] so he can go to bed.)\e"
+				"\0\s[200]anDings likes to go on long walks at night.\w8\w8\s[109] I don't know how he does it,\w4\s[201] I can't stand the darkness and the quiet pressing in.\e"
+				
+			}
+			
+			//=====Days within the month, think halfway through the month, first of the month, etc=====
+			
+			if day == 1
+			{
+				"\0\s[104]I always love the start of a new month, it feels good to check over all the things I completed last month,\w4 and to make a fresh list of things I want to get done.\e"
+			}
+			if day > 13 && day < 17
+			{
+				"\0\s[205]Halfway through the month, eh?\w8\w8\s[106] It really feels like it's gone by fast.\e"
+			}
+			if day >= 28
+			{
+				"\0\s[0]It's getting towards the end of the month.\w8\w8\s[103] Now's a good time to try and finish some projects or meet some goals, so you can set new ones for next month.\e"
+				
+			}
+			
+			//===Dialogue with random elements=== [Zi]I don't want to have too much of this, I find that in order to make random dialogue work, you have to make your dialogue vague so that it works. But when it's so vague, it feels really inconsequential... there's no real info in it. I definitely want a little bit, but I have to be very careful how I use it. One of the advantages it does have is that it means S will slowly trickle out the names of random family members, making it take at least some time to unlock everything he has to say. ...Sorry to anyone who the RNG gods look upon unfavorably. I may possibly make some alternate way to unlock them. Perhaps through an input box? Or some other convoluted series of events if you're determined.
+
+			"\0\s[202]Hey uh... So long as I'm here, you wouldn't mind if I tidied up your %(usersfolder), would you?\e"
+
+			//these are about random herbs and spices and such
+			{
+			"\0\s[1070] * (He's muttering to himself.)\w8\n\n..."
+			--
+			"Hmm...\w8 Maybe if I added a little %(ingredients)...\e"
+			"The %(ingredients) was a little too much last time, but if I tone it down...\e"
+			"%(ingredients) was definitely the wrong choice...\e"
+			"Almost out of %(ingredients) now, I have to remember to get some on the way home...\e"
+			"I guess it would be a way to use up some of that extra %(ingredients)...\e"
+			"%(ingredients), maybe..?\w8 ...Nah, nah that'd be too much...\e"
+			"Mmm...\w8 I wonder if %(ingredients) would do the trick...\e"
+			"I need to be more careful with the %(ingredients)...\e"
+			"%(family) really liked it when I added more %(ingredients)...\e"
+			"Fresh %(ingredients) will be vital...\e"
+			"Maybe a little %(ingredients), too...\e"
+			--
+			}
+			"\0\s[0]* (You ask if he has any %(ingredients).)\w8\w8\n\n\s[101]On me?\w8 No.\w8 I don't just carry random spices around.\e"
+			//These are about various foods, for now I've lumped together baked goods/fruits/vegetables. Might add more later.
+			{
+			"\0\s[1070] * (He's talking to himself.)\w8\n\n..."
+			--
+			"Maybe some %(bakedgoods) too...\e"
+			"%(family) might like it if I made %(bakedgoods) instead...\e"
+			"How about %(fruveg)?\w8 I could do that...\e"
+			"I'm sure %(family) would prefer %(bakedgoods) instead...\e"
+			"Maybe some %(fruveg) on the side...\e"
+			"Everyone likes the %(bakedgoods)...\e"
+			--
+			}
+			//These are about random family members	
+			{
+			"\0\s[1070] * (He's mumbling to himself.)\w8\n\n..."
+			--
+			"%(family) never did get back to me on that, I'll have to ask later...\e"
+			"I wonder if %(family) ever finished that...\e"
+			"Maybe %(family) will go with me...\e"
+			"If %(family) helps out, then it should be a breeze...\e"
+			"I wonder if %(family) still needs help with that...\e"
+			"I should make something special to cheer %(family) up...\e"
+			"%(family) really liked the %(bakedgoods) last time, maybe I can make that again...\e"
+			"But %(family) likes it better if I add %(ingredients)...\e"
+			--
+			}
+			
+		}
+		
+		//======================================================Good Trust======================================================
+		
+		if love > 74 && love < 150
+		{
+			"\0\s[102]* (He hums a quiet tune.)\e"
+			"\0\s[200]* (He's carefully taking in your desktop.)\w8\w8\n\nIt's a bit dusty in here, isn't it..?\w8\s[202] Would you mind if I cleaned this place up a bit?\e"
+			"\0\s[1070].\w8.\w8.\w8Did I leave the oven on..?\w8\w8\n\n\s[200]No,\w4 I know I didn't...\e"
+			"\0\s[205]I've never been much good with computers.\w8\w8\s[202] Are people supposed to be able to live inside them?\e"
+			"\0\s[1070].\w8.\w8.\w8So does this make me a 'computer person' technically?\e"
+			"\0\s[0]So uh, what kind of stuff do you get up to out there?\w8\w8\s[106] I can't really tell from this side of the screen.\e"
+			"\0\s[208]It's very...\w8\w8 flat\w4 here.\w8\w8\s[206] I'm not really sure how to describe it...\e"
+			"\0\s[106]What are all of these icons, anyways?\w8\w8\s[202] I only know a couple of apps on my phone,\s[205] computers are mostly a mystery to me.\e"
+			"\0\s[202]It's uh...\w8\w8\s[101] really interesting here.\w8\w8\s[208] Definitely not what I would've thought.\e"
+			"\0\s[208]%screenwidthx%screenheight...\w8\w8\s[202] It sounds like a lot, but at this size I can see every individual pixel.\e"
+			"\0\s[110]Someone told me there's another kind of computer,\w4\s[106] named after apples or something?\w8\w8\w8\s[208]\n\nIs this one of those?\w8\w8 I'm not sure how to tell the difference...\e"
+			
+			
+			
+			//========ifs========
+			if nowshell == "red_hoodie"
+			{
+				"\0\s[102]* (You wonder if he ever takes that hoodie off...)\e"
+				"\0\s[102]* (He seems very comfy in his red hoodie.)\e"
+			}
+			if passhour >= 1
+			{
+				if timeslot == "evening"
+				"\0\s[102]Heh, I bet anRosie's gotten into the cookie jar by now...\w8\w8\s[106] That girl's got a big sweet tooth,\w4\s[107] and if I'm not there to stop her there might not be any cookies left.\e"
+			}
+			if passhour >= 20
+			{
+			"\0\s[106]Hey uh,\w4 your %(usersfolder) was a little messy, so I straightened it up.\w8\w8\s[107] I hope that's alright, I'm kind of a compusive cleaner.\e"
+				
+			"\0\s[202]Uh...\w8 %(username)?\w8\w8 I hope you don't mind,\w3 but \s[0]I was wandering around your %(usersfolder) and found some %(ingredients)...\w8\w8 You mind if I keep this..?\e"
+		
+			"\0\s[207]* (He yawns, long and slow...)\e"
+		
+			"\0\s[200]I wonder how the kids are doing...\e"
+			
+			"\0\s[206]* (He's mumbling to himself.)\w8\w8\n\n%(passhour) hours...\e"
+			}
+			
+			if LVCheck == 1 && broken == 0 //runs at any time that you know his secrets but he's not broken
+			{
+				"\0\s[204]* (He's taking deep,\w2 slow breaths.)\e"
+				"\0\s[200]* (He looks wistful.)\w8\w8\w8\n\n\s[204]* (You wonder if he's thinking about the past again...)\e"
+			}
+			if snagged > 0 //any time that you've snagged his head and you're not on a negative route
+			{
+				"\0\s[200]* (He sighs and rubs his head a little.)\w8\w8\n\n* (You wonder if it still hurts from when you snagged it...)\e"
+			}
+			if SeePC == "ON"
+			{
+				OnWhatreYouUpTo
+			}
+			
+			
+			
+			//=====About family members=====
+			if askedaboutwd == 1
+			{
+				
+			}
+			if askedaboutdings == 1
+			{
+				
+			}
+			if askedaboutwings == 1
+			{
+				
+			}
+			if askedaboutbarcode == 1
+			{
+				
+			}
+			if askedaboutbluejeans == 1
+			{
+				"\0\s[200]anBlue gets really worried while I'm away.\w8\w8\s[202] I've tried to tell him it's alright here,\w4\s[200] but he worries when he can't be with me.\e"
+			}
+			if askedaboutabbi == 1
+			{
+				if season == "Summer"
+				{
+					"\0\s[104]anAbbi really likes this time of year, the warm sun is one of his favorite things.\w8\w8\s[106] Sometimes we have to remind the little ones not to spray him with their squirt guns, though.\w8\w8\n\n\s[104]They'll learn with time.\e"
+				}
+			}
+			if askedaboutrosie == 1
+			{
+				
+			}
+			if askedaboutroman == 1
+			{
+				
+			}
+			if askedaboutcambria == 1
+			{
+				
+			}
+			if askedabouttriton == 1
+			{
+				
+			}
+			if askedaboutlulo == 1
+			{
+				
+			}
+			if askedaboutazo == 1
+			{
+				"\0\s[104]Every time I come home from here, anAzo asks me all about what happened and what I saw.\w8\w8\s[205] I think he'd tag along himself if he could figure out how.\e"
+			}
+			if askedaboutsigil == 1
+			{
+				
+			}
+			if askedaboutelko == 1
+			{
+				
+			}
+			
+			
+			
+			
+			//=====Time of day, day of week, months, seasons, etc=====
+			
+			//=====Seasons=====
+			if season == "Spring"
+			{
+				"\0\s[205]I like cold weather the best,\w4\s[104] but it's always so cheery to see new flowers and plants budding.\w8\w8\n\n\s[106]Unless you're allergic,\w4 I suppose.\w8\w8 I hope you're doing alright, %(username).\e"
+				"\0\s[205]It's planting season again.\w8\w8\s[102] I love the rhythm of the seasons up on the surface,\w4 it's comforting.\e"
+				"\0\s[104]anTriton seems to be perking up lately.\w8\w8\s[205] The new plants budding always seems to cheer him up.\w8\w8\n\n\s[106] I can't really blame the kid for not liking winter,\w4 being made of water and all.\e"
+					
+			}
+			if season == "Summer"
+			{
+				"\0\s[106]Is it hot out where you live?\w8\w8 We've been pushing 100 degrees lately.\w8\w8\n\n\s[109]I already sleep a lot, but with all this heat I end up sleeping most of the day away.\e"
+				"\0\s[205]I guess on the bright side, there's more daylight at this time of year.\w8\w8\s[106] I'm not really a fan of the dark.\e"
+				"\0\s[104]One thing I will say about the warm season,\w4 it feels really good to sit in the sun and let it soothe the aches in my bones.\e"
+				
+				if knowaboutfamily == 1
+				{	
+					"\0\s[104]It's been really lively at home lately, with all the kids home from school.\w8\w8\s[205] I guess that's one good thing about this time of year.\e"
+					"\s[104]All the littler kids like this time of year.\w8\w8\s[0] Trips to the pool or the beach, running through sprinklers, water balloon fights...\w8\w8\n\n\s[106]Or maybe they just like not being in school.\e"
+				}
+			}
+			if season == "Autumn"
+			{
+				"\0\s[101]I don't really understand why some humans call this season autumn and some humans call it fall.\w8\w8\s[104] I think Autumn is the prettier word, very fitting for the colorful season.\e" //[Zi]Yes I'm American, yes I use autumn rather than fall, for the same reason S does. Fight me.
+				"\0\s[0]Autumn is a busy time around our house, there's a lot of work to be done harvesting crops.\w8\w8\s[104] But harvest season is also something that brings cheer,\w4 there's so much good food to be had that we have to share it around.\e"
+				if askedaboutbluejeans == 1
+				{
+					"\0\s[104]This is anBlue's favorite time of year.\w8\w8\s[105] He likes to go on long walks through the woods with me,\w4\s[106] though he usually ends up carrying me back.\e"
+					"\0\s[0]Do you like seeing the leaves change color?\w8\w8\s[104] anBlue loves it, and I have to agree.\w8\w8\n\n\s[102]It's nice to really feel the rhythm of the world.\e"
+					
+				}
+			}
+			if season == "Winter"
+			{
+				"\0\s[0]Do you like to watch the snow fall?\w8\w8\s[104] Sometimes I wonder if snowflakes are little pieces of magic falling from the sky.\e"
+				"\0\s[102]Warm weather is nice, but I really prefer cool weather.\w8\w8\s[106] I guess it might not be as pleasant if you have flesh, though...\e"
+				
+				if knowaboutfamily == 1
+				{
+					"\0\s[0]Do you have any plans this winter?\w8\w8\s[104] I'm not much for it myself, but the kids love to go sledding.\e"
+					"\0\s[0]Do you like making snowmen, %(username)?\w8\w8 \s[205]The kids love making them,\s[103] and I always make time to help.\w8\w8\s[104] It's a good bonding activity.\e"
+				}
+				if askedaboutbluejeans == 1
+				{
+				"\0\s[102]I love the cold weather.\w8\w8 Everything's so quiet and peaceful,\w4\s[105] and it's so nice to cozy up with anBlue and a good book.\e"
+				}
+			}
+			
+			//=====Months=====
+			if month == 1 //January
+			{
+				"\0\s[1070]%(year)...\w8\w8\s[107] Yep, still sounds weird.\e"
+				"\0\s[101]So how's %(year) treating you?\w8\w8\s[104] I'm always excited for the start of a new year, it feels good to look back at what we accomplished last year and set goals for the next.\e"
+				"\0\s[205]Halfway through winter...\w8\w8\s[106] Better enjoy the cold while it's here.\e"
+			}
+			if month == 2 //February
+			{
+				if day > 15
+				{
+				"\0\s[107]I've been seeing a lot more grass poking up through the snow lately.\w8\w8\s[106] Guess winter's coming to an end for the year.\e"
+				}
+				if askedaboutabbi == 1 && day < 19
+				{
+					"\0\s[0]anAbbi's birthday is coming up soon.\w8\w8\s[104] I've got some big plans this year, I hope he likes them.\e"
+				}
+			}
+			if month == 3 //March || Beginning of Spring
+			{
+				"\0\s[103]I've been seeing a lot of flowers poking up out of the ground lately.\w8\w8\s[104] It's nice to see the color returning to the world.\e"
+			}
+			if month == 4 //April
+			{
+				"\0\s[104]I've got to admit, I really do like the rainshowers that we get this time of year.\w8\w8\s[106] I'm not such a fan of big thunderstorms,\w4\s[104] but light showers are very soothing.\e"
+				"\0\s[205]The first time I heard real rain was amazing.\w8\w8\s[106] I was really confused at first,\s[107] and honestly a bit afraid,\w4\s[104] but I came around pretty quickly once I realized there was no danger.\e"
+				"\0\s[107]Sometimes we still get snow this time of year,\w4\s[202] but thankfully it doesn't stick around too long.\w8\w8\n\n\s[208]Makes it difficult to keep my garden healthy, though.\e"
+				if day == 1
+				{
+					"\0\s[106]Don't forget to be on the lookout for pranks today.\w8\w8\s[107] There are so many pranksters in our house, it's honestly a bit of a relief to be here for the moment.\e"
+				}
+			}
+			if month == 5 //May
+			{
+				if day > 20
+				{
+					"\0\s[106]Are you ready for the warm season?\w8\w8\s[107] I'm not, but I'll just have to deal with it anyways.\e"
+					"\0\s[103]The kids are starting to get excited for summer.\w8\w8\s[104] School will be letting out soon, and things are about to get a lot more lively at home.\e"
+				}
+			}
+			if month == 6 //June || Beginning of Summer
+			{
+				"\0\s[0]How are you planning to spend this summer?\w8\w8\s[105] I'm hoping I can convince anBlue to spend some time sunning with me.\e"
+			}
+			if month == 7 //July
+			{
+				
+				if day < 5
+				{
+				"\0\s[106]I think this is my least favorite time of year, fireworks are pretty and all but the loud noises have a tendency to catch me off guard.\w8\w8\s[107] Pair that with my prefering cold weather, and...\w8\w8\s[106]\n\nWell, on the plus side there's a lot of nice summer foods.\e"
+				}
+			}
+			if month == 8 //August
+			{
+				"\0\s[102]Summer's almost over now.\w8\w8\s[0] Did you make it a good one?\w8\w8\s[104] I enjoyed it, but I'm also looking forward to Autumn.\e"
+			}
+			if month == 9 //September || Beginning of Autumn
+			{
+				if day < 7
+				{
+				"\0\s[102]It's the beginning of autumn...\w8\w8\s[104] It's really nice to feel a cool breeze again, isn't it?\e"
+				}
+			}
+			if month == 10 //October
+			{
+				"\0\s[200]October is...\w8\w8 a hit or miss month to be a monster.\w8\w8\s[201] After monsters moved up to the surface, a lot of people thought Halloween was in poor taste, so they decided to make it a celebration of monsterkind's culture instead.\w8\w8\n\n\s[104]It's actually a pretty nice event, all in all.\w8\w8\s[0] The humans who participate are usually very interested in learning about our customs and way of life, and it helps to build relations between cultures.\w8\w8\n\n\s[200]But ah, there are some who hate us for 'ruining' their holiday.\w8\w8\s[201] I don't really care if they want to celebrate Halloween the way they used to, so long as they aren't trying to hurt anyone, but...\w8\w8\s[204] Some of them use it to try and make a statement about their dislike of monsters in general.\w8\w8\n\n\s[202]Hopefully one day we can convince them over to our side, it's not like we don't go door to door for candy.\e"
+				"\0\s[0]Are there a lot of trees where you live?\w8\w8\s[104] We've got a good few near us, and they look spectacular this time of year.\e"
+				if askedaboutbluejeans == 1
+				{
+					"\0\s[205]anBlue's really been enjoying the weather lately.\w8\w8\s[104] Winter is my favorite,\w4\s[105] but Autumn is just as good because I get to see anBlue smile more.\e"
+				}
+			}
+			if month == 11 //November
+			{
+				"\0\s[103]Are you looking forward to winter?\w8\w8\s[104] I sure am.\e"
+			}
+			if month == 12 //December || Beginning of Winter
+			{
+				"\0\s[106]Holiday season is upon us.\w8\w8\s[107] Honestly I find the human traditions a bit too pushy for my tastes,\w4\s[104] but I do really love the lights and sharing a simple Gyftmas with my family.\e"
+				"\0\s[205]I remember Gyftmas time back in Snowdin town...\w8\w8\s[104] It was really a sight to see.\w8\w8\s[102] All the lights strung up, illuminating the dark, light reflecting off the snow...\e"
+				"\0\s[106]This used to be one of my favorite times of year, but uh,\w4\s[107] the pushiness of the human traditions have soured it a little.\w8\w8\s[106] I've been trying to do my Gyftmas shopping well in advance so I can steer clear of stores until January.\e"
+				
+				if day < 5
+				{
+				"\0\s[104]Winter's finally here!\w8\w8\s[0] I dunno about you,\w4\s[103] but I'm pretty excited.\e"
+				}
+			}
+			
+			//=====Days of the week=====
+			if wd == "Sun"
+			{
+				
+			}
+			if wd == "Mon"
+			{
+				"\0\s[107]Monday gets a bit of a bad rap,\w4\s[106] but I don't think it's really as bad as people say.\w8\w8\s[202]\n\nMaybe because I've been a parent at home for a long time and like having a day to rest after the weekend chaos.\e"
+			}
+			if wd == "Tue"
+			{
+				"\0\s[103]How's Tuesday finding you?\w8\w8\s[0] Hopefully well?\e"
+			}
+			if wd == "Wed"
+			{
+				"\0\s[0]Halfway through another week.\w8\w8\s[106] Sure goes by fast, doesn't it?\w8\w8\s[205]\n\nBut I'm not complaining, it's another week without any major crisis,\w4\s[102] and I always try to take time and be grateful for that.\e"
+			}
+			if wd == "Thu"
+			{
+				
+			}
+			if wd == "Fri"
+			{
+				"\0\s[205]anCambria's got this thing she likes to do with her friends sometimes, it's called outfit friday.\w8\w8\s[0] They pick each other new combinations of clothes to wear for the day, sometimes sharing pieces to create something new.\n\n\w8\w8\s[107]I don't really get it,\w4\s[205] but it seems to make them happy, and I'm glad to see them having fun.\e"
+			}
+			if wd == "Sat"
+			{
+				"\0\s[103]Got any plans for the weekend?\w8\w8\s[205] I'm hoping to spend some time with anMySister, personally.\e"
+			}
+			
+			//Time of day
+			if timeslot == "midnight" //1am-4am
+			{
+				if passhour < 1
+				{
+					"\0\s[109]* (He looks really tired...)\w8\w8\n\n* (He must not be used to waking up this early.)\e"
+				}
+				if passhour >= 2
+				{
+				"\0\s[109]* (He looks really tired...)\w8\w8\n\n* (He must not be used to staying up this late.)\e"
+				}
+				"\0\s[109]* (He seems exhausted...)\e"
+			}
+			if timeslot == "earlymorning" //5am-8am
+			{
+				"\0\s[104]* (He's humming a cheery tune to himself...)\w8\w8\n\n* (He's definitely a morning person.)\e"
+				"\0\s[0]Got any big plans for today?\w8\w8\s[104] The whole day is still ahead of you.\e"
+				"\0\s[103]Is the sun up for you yet?\w8\w8\s[104] Watching the sunrise is one of my favorite things in the whole world.\w8\w8\s[205]\n\nI can't even describe how amazing it felt to see it for the first time...\e"
+			}
+			if timeslot == "morning" //9am-11am
+			{
+				"\0\s[102]This is usually one of the more peaceful times around the house...\w8\w8\s[106] Everyone else is either out working, at school, or asleep.\w8\w8\s[104] It's a nice little break after the morning rush.\e"
+				
+				if LV >= 100
+				{
+				"\0\s[107]I usually take a nap about now,\w4\s[106] so you'll have to forgive me if I fall asleep on you.\e"
+				}
+			}
+			if timeslot == "lunch" //12pm-2pm
+			{
+				"\0\s[0]Have you had lunch yet?\w8\w8\s[107] Eating regularly is important.\e"
+				"\0\s[208]Hmm...\w8\w8 anWD will probably be making lunch, since I'm not home...\w8\w8\s[107] Hopefully, anyways.\e"
+				"\0\s[206]...Hmm...\w8\w8 Maybe I should head to the store after all...\e"
+				if givenfood == 0
+				{
+					"\0\s[107]* (He's mumbling to himself...)\w8\w8\n\n* (Something about making lunch?)\e"
+					"\0\s[206]I wonder if there's anything edible around here...\e"
+				}
+				if givenfood > 0
+				{
+					"\0\s[1071]* (He's eating something...)\w8\w8\s[102]\w8\w8\w8\n\n* (Must be one of the snacks you\s[1071] gave him earlier?)\e"		
+				}
+			}
+			if timeslot == "afternoon" //3pm-5pm
+			{
+				"\0\s[206]The kids are probably getting home from school about now...\e"
+				"\0\s[106]Are you sure you want to spend the last of the daylight in front of your computer?\w8\w8\s[107] Though I guess I shouldn't judge if that's what you like to do.\e"
+				"\0\s[206]...There still might be time to stop by the store after I get home...\e"
+			}
+			if timeslot == "evening" //6pm-8pm
+			{
+				"\0\s[0]Has the sun set where you are?\w8\w8 I try to stay in or near the house after dark,\s[1010] but I do love to watch the colorful display as the sun leaves for the night.\e"
+				"\0\s[205]I don't really like to leave the house after dark,\w4\s[102] but I do find it very calming how everything gets so quiet at night.\e"
+				"\0\s[102]* (He hums a quiet lullaby.)\e"
+				"\0\s[206]...Hmm...\w8\w8 they might be closed by now...\e"
+			}
+			if timeslot == "latenight" //9pm-12am
+			{
+				"\0\s[106]It's getting pretty late, kiddo.\w8\w8 Are you planning to head to bed soon?\e"
+				"\0\s[207]* (He yawns slowly...)\w8\w8\n\n* (Maybe you should close him\s[109] so he can go to bed.)\e"
+				"\0\s[200]anDings likes to go on long walks at night.\w8\w8\s[109] I don't know how he does it,\w4\s[201] I can't stand the darkness and the quiet pressing in.\e"
+				
+			}
+			
+			//=====Days within the month, think halfway through the month, first of the month, etc=====
+			
+			if day == 1
+			{
+				"\0\s[104]I always love the start of a new month, it feels good to check over all the things I completed last month,\w4 and to make a fresh list of things I want to get done.\e"
+			}
+			if day > 13 && day < 17
+			{
+				"\0\s[205]Halfway through the month, eh?\w8\w8\s[106] It really feels like it's gone by fast.\e"
+			}
+			if day >= 28
+			{
+				"\0\s[0]It's getting towards the end of the month.\w8\w8\s[103] Now's a good time to try and finish some projects or meet some goals, so you can set new ones for next month.\e"
+				
+			}
+			
+			//===Dialogue with random elements=== I don't want to have too much of this, I find that in order to make random dialogue work, you have to make your dialogue vague so that it works. But when it's so vague, it feels really inconsequential... there's no real info in it. I definitely want a little bit, but I have to be very careful how I use it. One of the advantages it does have is that it means S will slowly trickle out the names of random family members, making it take at least some time to unlock everything he has to say. ...Sorry to anyone who the RNG gods look upon unfavorably. I may possibly make some alternate way to unlock them. Perhaps through an input box? Or some other convoluted series of events if you're determined.
+
+			"\0\s[202]Hey uh... So long as I'm here, you wouldn't mind if I tidied up your %(usersfolder), would you?\e"
+
+			//these are about random herbs and spices and such
+			{
+			"\0\s[1070] * (He's muttering to himself.)\w8\n\n..."
+			--
+			"Hmm...\w8 Maybe if I added a little %(ingredients)...\e"
+			"The %(ingredients) was a little too much last time, but if I tone it down...\e"
+			"%(ingredients) was definitely the wrong choice...\e"
+			"Almost out of %(ingredients) now, I have to remember to get some on the way home...\e"
+			"I guess it would be a way to use up some of that extra %(ingredients)...\e"
+			"%(ingredients), maybe..?\w8 ...Nah, nah that'd be too much...\e"
+			"Mmm...\w8 I wonder if %(ingredients) would do the trick...\e"
+			"I need to be more careful with the %(ingredients)...\e"
+			"%(family) really liked it when I added more %(ingredients)...\e"
+			"Fresh %(ingredients) will be vital...\e"
+			"Maybe a little %(ingredients), too...\e"
+			--
+			}
+			"\0\s[0]* (You ask if he has any %(ingredients).)\w8\w8\n\n\s[101]On me?\w8 No.\w8 I don't just carry random spices around.\e"
+			//These are about various foods, for now I've lumped together baked goods/fruits/vegetables. Might add more later.
+			{
+			"\0\s[1070] * (He's talking to himself.)\w8\n\n..."
+			--
+			"Maybe some %(bakedgoods) too...\e"
+			"%(family) might like it if I made %(bakedgoods) instead...\e"
+			"How about %(fruveg)?\w8 I could do that...\e"
+			"I'm sure %(family) would prefer %(bakedgoods) instead...\e"
+			"Maybe some %(fruveg) on the side...\e"
+			"Everyone likes the %(bakedgoods)...\e"
+			--
+			}
+			//These are about random family members	
+			{
+			"\0\s[1070] * (He's mumbling to himself.)\w8\n\n..."
+			--
+			"%(family) never did get back to me on that, I'll have to ask later...\e"
+			"I wonder if %(family) ever finished that...\e"
+			"Maybe %(family) will go with me...\e"
+			"If %(family) helps out, then it should be a breeze...\e"
+			"I wonder if %(family) still needs help with that...\e"
+			"I should make something special to cheer %(family) up...\e"
+			"%(family) really liked the %(bakedgoods) last time, maybe I can make that again...\e"
+			"But %(family) likes it better if I add %(ingredients)...\e"
+			--
+			}
+
+
+		}
+		
+		//====================================================Mild Trust========================================================
+		if love > 19 && love < 75
+		{
+			"\0\s[200]* (He's carefully taking in your desktop.)\w8\w8\n\nIt's a bit dusty in here, isn't it..?\w8\s[202] Would you mind if I cleaned this place up a bit?\e"
+			"\0\s[1070].\w8.\w8.\w8Did I leave the oven on..?\w8\w8\n\n\s[200]No,\w4 I know I didn't...\e"
+			"\0\s[205]I've never been much good with computers.\w8\w8\s[202] Are people supposed to be able to live inside them?\e"
+			"\0\s[1070].\w8.\w8.\w8So does this make me a 'computer person' technically?\e"
+			"\0\s[0]So uh, what kind of stuff do you get up to out there?\w8\w8\s[106] I can't really tell from this side of the screen.\e"
+			"\0\s[208]It's very...\w8\w8 flat\w4 here.\w8\w8\s[206] I'm not really sure how to describe it...\e"
+			"\0\s[106]What are all of these icons, anyways?\w8\w8\s[202] I only know a couple of apps on my phone,\s[205] computers are mostly a mystery to me.\e"
+			"\0\s[202]It's uh...\w8\w8\s[101] really interesting here.\w8\w8\s[208] Definitely not what I would've thought.\e"
+			"\0\s[110]Someone told me there's another kind of computer,\w4\s[106] named after apples or something?\w8\w8\w8\s[208]\n\nIs this one of those?\w8\w8 I'm not sure how to tell the difference...\e"
+			
+			
+			
+			//========ifs========
+			if nowshell == "red_hoodie"
+			{
+				
+			}
+			if passhour >= 1
+			{
+				
+			}
+			if passhour >= 20
+			{
+			"\0\s[106]Hey uh,\w4 your %(usersfolder) was a little messy, so I straightened it up.\w8\w8\s[107] I hope that's alright, I'm kind of a compusive cleaner.\e"
+				
+			"\0\s[202]Uh...\w8 %(username)?\w8\w8 I hope you don't mind,\w3 but \s[0]I was wandering around your %(usersfolder) and found some %(ingredients)...\w8\w8 You mind if I keep this..?\e"
+		
+			"\0\s[200]I wonder how the kids are doing...\e"
+			
+			"\0\s[206]* (He's mumbling to himself.)\w8\w8\n\n%(passhour) hours...\e"
+			}
+			
+			if LVCheck == 1 && broken == 0 //runs at any time that you know his secrets but he's not broken
+			{
+				"\0\s[204]* (He's taking deep,\w2 slow breaths.)\e"
+				"\0\s[200]* (He looks wistful.)\w8\w8\w8\n\n\s[204]* (You wonder if he's thinking about the past again...)\e"
+			}
+			if snagged > 0 //any time that you've snagged his head and you're not on a negative route
+			{
+				"\0\s[200]* (He sighs and rubs his head a little.)\w8\w8\n\n* (You wonder if it still hurts from when you snagged it...)\e"
+			}
+			
+			
+			//=====Time of day, day of week, months, seasons, etc===== //Not many of these here cause he doesn't trust you all that much...
+			
+			//Time of day
+			if timeslot == "midnight" //1am-4am
+			{
+				if passhour < 1
+				{
+					"\0\s[109]* (He looks really tired...)\w8\w8\n\n* (He must not be used to waking up this early.)\e"
+				}
+				if passhour >= 2
+				{
+				"\0\s[109]* (He looks really tired...)\w8\w8\n\n* (He must not be used to staying up this late.)\e"
+				}
+				"\0\s[109]* (He seems exhausted...)\e"
+			}
+			if timeslot == "earlymorning" //5am-8am
+			{
+
+			}
+			if timeslot == "morning" //9am-11am
+			{
+
+			}
+			if timeslot == "lunch" //12pm-2pm
+			{
+				"\0\s[206]...Hmm...\w8\w8 Maybe I should head to the store after all...\e"
+				if givenfood == 0
+				{
+					"\0\s[107]* (He's mumbling to himself...)\w8\w8\n\n* (Something about making lunch?)\e"
+					"\0\s[206]I wonder if there's anything edible around here...\e"
+				}
+				if givenfood > 0
+				{
+					"\0\s[1071]* (He's eating something...)\w8\w8\s[102]\w8\w8\w8\n\n* (Must be one of the snacks you\s[1071] gave him earlier?)\e"		
+				}
+			}
+			if timeslot == "afternoon" //3pm-5pm
+			{
+				"\0\s[206]The kids are probably getting home from school about now...\e"
+				"\0\s[106]Are you sure you want to spend the last of the daylight in front of your computer?\w8\w8\s[107] Though I guess I shouldn't judge if that's what you like to do.\e"
+				"\0\s[206]...There still might be time to stop by the store after I get home...\e"
+			}
+			if timeslot == "evening" //6pm-8pm
+			{
+				"\0\s[206]...Hmm...\w8\w8 they might be closed by now...\e"
+			}
+			if timeslot == "latenight" //9pm-12am
+			{
+				"\0\s[106]It's getting pretty late, kiddo.\w8\w8 Are you planning to head to bed soon?\e"
+				"\0\s[207]* (He yawns slowly...)\w8\w8\n\n* (Maybe you should close him\s[109] so he can go to bed.)\e"	
+			}
+			
+			//=====Days within the month, think halfway through the month, first of the month, etc=====
+			
+			if day == 1
+			{
+				
+			}
+			if day > 13 && day < 17
+			{
+				"\0\s[205]Halfway through the month, eh?\w8\w8\s[106] It really feels like it's gone by fast.\e"
+			}
+			if day >= 28
+			{
+				
+			}
+			
+			//===Dialogue with random elements=== I don't want to have too much of this, I find that in order to make random dialogue work, you have to make your dialogue vague so that it works. But when it's so vague, it feels really inconsequential... there's no real info in it. I definitely want a little bit, but I have to be very careful how I use it. One of the advantages it does have is that it means S will slowly trickle out the names of random family members, making it take at least some time to unlock everything he has to say. ...Sorry to anyone who the RNG gods look upon unfavorably. I may possibly make some alternate way to unlock them. Perhaps through an input box? Or some other convoluted series of events if you're determined.
+
+			"\0\s[202]Hey uh... So long as I'm here, you wouldn't mind if I tidied up your %(usersfolder), would you?\e"
+
+			//these are about random herbs and spices and such
+			{
+			"\0\s[1070] * (He's muttering to himself.)\w8\n\n..."
+			--
+			"Hmm...\w8 Maybe if I added a little %(ingredients)...\e"
+			"The %(ingredients) was a little too much last time, but if I tone it down...\e"
+			"%(ingredients) was definitely the wrong choice...\e"
+			"Almost out of %(ingredients) now, I have to remember to get some on the way home...\e"
+			"I guess it would be a way to use up some of that extra %(ingredients)...\e"
+			"%(ingredients), maybe..?\w8 ...Nah, nah that'd be too much...\e"
+			"Mmm...\w8 I wonder if %(ingredients) would do the trick...\e"
+			"I need to be more careful with the %(ingredients)...\e"
+			"%(family) really liked it when I added more %(ingredients)...\e"
+			"Fresh %(ingredients) will be vital...\e"
+			"Maybe a little %(ingredients), too...\e"
+			--
+			}
+			"\0\s[0]* (You ask if he has any %(ingredients).)\w8\w8\n\n\s[101]On me?\w8 No.\w8 I don't just carry random spices around.\e"
+			//These are about various foods, for now I've lumped together baked goods/fruits/vegetables. Might add more later.
+			{
+			"\0\s[1070] * (He's talking to himself.)\w8\n\n..."
+			--
+			"Maybe some %(bakedgoods) too...\e"
+			"%(family) might like it if I made %(bakedgoods) instead...\e"
+			"How about %(fruveg)?\w8 I could do that...\e"
+			"I'm sure %(family) would prefer %(bakedgoods) instead...\e"
+			"Maybe some %(fruveg) on the side...\e"
+			"Everyone likes the %(bakedgoods)...\e"
+			--
+			}
+			//These are about random family members	
+			{
+			"\0\s[1070] * (He's mumbling to himself.)\w8\n\n..."
+			--
+			"%(family) never did get back to me on that, I'll have to ask later...\e"
+			"I wonder if %(family) ever finished that...\e"
+			"Maybe %(family) will go with me...\e"
+			"If %(family) helps out, then it should be a breeze...\e"
+			"I wonder if %(family) still needs help with that...\e"
+			"I should make something special to cheer %(family) up...\e"
+			"%(family) really liked the %(bakedgoods) last time, maybe I can make that again...\e"
+			"But %(family) likes it better if I add %(ingredients)...\e"
+			--
+			}
+		}
+		
+		//====================================================Doesn't trust yet========================================================
+		
+		if love <= 19 //He isn't sure what to make of you yet
+		{
+			//"\0\s[206]It's so quiet here...\e" //oops I forgot about music players and youtube. Hrm. It's a shame these things cant detect whether the desktop is silent or not...
+			"\0\s[206]* (He glances around your desktop, taking note of the various features.)\e"
+			"\0\s[106]So uh...\w8\w8 What's the weather like out there?\w8\w8\s[206]\n\nIt doesn't seem like there's weather at all in here...\e"
+			"\0\s[206]* (He doesn't say anything...)\w8\w8\n\n* (Maybe you should try interacting with him?)\e"
+			"\0\s[200]* (He seems a little tense.)\e"
+			if snagged > 0 //any time that you've snagged his head and you're not on a negative route
+			{
+				"\0\s[200]* (He sighs and rubs his head a little.)\w8\w8\n\n* (You wonder if it still hurts from when you snagged it...)\e"
+			}
+			if LVCheck == 1 && broken == 0 //runs at any time that you know his secrets but he's not broken
+			{
+				"\0\s[204]* (He's taking deep,\w2 slow breaths.)\e"
+				"\0\s[200]* (He looks wistful.)\w8\w8\w8\n\n\s[204]* (You wonder if he's thinking about the past again...)\e"
+			}
+		}
+		
+		if lastinteracted > 6 //putting these here so they get called more frequently when applicable
+		{
+			"\0\s[106]Hey uh...\w8\w8 Are you still there?\w8\w8\n\n\s[206]I get kinda lonely when it's quiet...\e"
+			"\0\s[101]You still there,\w4 %(username)?\w8\w8\s[202] If you're not I'd really prefer to spend this time with my family...\e"
+		}
+		if lastinteracted > 20
+		{
+			"\0\s[200]Hmm...\w8\w8 %(heshe) wouldn't just be ignoring me...\w8\w8\s[206] Right?\e"
+			"\0\s[204]* (He hums quietly,\w4 but in a way that suggests he's trying to distract himself from something.)\e"
+			"\0\s[200]* (He fidgets in place.)\e"
+			"\0* (He disappears\s[-1] into your files...)\n\n\w8\w8* (Perhaps he's looking for something to keep him occupied.)\e"
+		}
+	}
+	
+	elseif LV > 0 //Negative routes
+	{
+		if LVCheck == 1 //know his secrets
+		{
+
+				if broken == 1 //broken him down all the way
+				{
+					"\s[510]\i[0]* (He doesn't say anything, just stands there silently, awaiting your judgement.)\e"
+					"\s[510]\i[0]..."
+					"\s[510]\i[0]..."
+					"\s[510]\i[0]..."
+				}
+				else //breaking him, but he's still standing
+				{
+					"\s[500]\i[0]* (He shivers quietly.)\e"
+					"\s[510]\i[6]* (He shifts on his feet nervously.)\e"
+					"\s[500]\i[0]* (You can see his sins crawling on his back.)\e"
+				}
+			
+		}
+		else //Just mean for no reason
+		{
+			if LV <= 30 //you've been a bit mean
+			{
+				"\0\s[400]\i[4]* (He looks around your desktop, and you wonder if he's searching for an exit.)\e"
+				"\0\s[400]\i[2]Is there a reason you're keeping me here?\w8\w8 Am I just a glorified punching bag to you or something?\e"
+				"\0\s[400]\i[2]You know, if you hate me so much maybe you shouldn't have brought me here.\w8\w8\s[400]\i[1]\n\nI guess the concept of live and let live is lost on you.\e"
+			}
+			elseif LV >=31 //You've been really mean and he hates you a lot
+			{
+				"\0\s[400]\i[4]* (He looks around your desktop, and you wonder if he's searching for an exit.)\w8\w8\n\n* (There isn't one.)\e"
+				"\0\s[410]\i[4]* (Seems like he doesn't want to talk to you.)\e"
+				"\0\s[400]\i[0]* (He's ignoring you.)\e"
+				"\0\s[400]\i[0]* (He doesn't say a word.)\e"
+			}
+		}
+	}
+}
+
+
+//======================================================================================================================
+
+
+
+
+OnWhatreYouUpTo
+{
+	
+	if passhour > 24
+	{
+		"\0\s[101]Your computer's been open %exh hours.\w8\w8\s[202] Are you ever gonna restart it?\e"
+	}
+	
+	//EVNova - This is an ancient game that very few people play anymore, so this is 100% just for me and anyone from the EVN server who downloads this |D Hi guys!
+	EVNovaOpen = FUNCTIONEX("findwin.dll","find",,"WinGameClass")
+	EVNovaMin = FUNCTIONEX ("findwin.dll","count",,"WinGameClass")
+	ActuallyNova = FUNCTIONEX("findwin.dll","getcaption","WinGameClass")
+	
+	if "Nova" _in_ ActuallyNova && EVNovaOpen == 1
+	{
+		if EVNovaMin == 1
+		{
+			"\0\s[110]Whoa,\w4 what is that game?\w8\w8\s[104] It looks \f[italic,true]ancient.\f[italic,false]\e"
+		}
+		else
+		{
+			"\0\s[0]EVNova is minimized.\e"
+		}
+	}
+	
+	//Winamp - Hey check it out winamp also displays the song name in the window class :D
+	WinampOpen = FUNCTIONEX("findwin.dll","find",,"Winamp v1.x")
+	WinampMin = FUNCTIONEX("findwin.dll","count",,"Winamp v1.x")
+	
+	if WinampOpen == 1
+	{
+		if SeeNowPlaying == "ON"
+		{
+			WhatSong = FUNCTIONEX("findwin.dll","getcaption","Winamp v1.x")
+			NowPlaying
+		}
+		if WinampMin == 1
+		{
+			"\0\s[102]He bobs his head to your music.\e"
+		}
+		else
+		{
+			"\0\s[202]You'd think minimizing your music player would muffle the sound, but uh,\w4\s[104] nope.\e"
+		}
+	}
+	
+	//Foobar2000 - Does anyone else use this or is it just me? It's just me XD
+	FoobarOpen = FUNCTIONEX("findwin.dll","find",,"{97E27FAA-C0B3-4b8e-A693-ED7881E99FC1}")
+	FoobarMin = FUNCTIONEX("findwin.dll","count",,"{97E27FAA-C0B3-4b8e-A693-ED7881E99FC1}")
+	
+	if FoobarOpen == 1
+	{
+		if SeeNowPlaying == "ON"
+		{
+			WhatSong = FUNCTIONEX("findwin.dll","getcaption","{97E27FAA-C0B3-4b8e-A693-ED7881E99FC1}")
+			NowPlaying
+		}
+		if FoobarMin == 1
+		{
+			"\0\s[102]He bobs his head to your music.\e"
+		}
+		else
+		{
+			"\0\s[202]You'd think minimizing your music player would muffle the sound, but uh,\w4\s[104] nope.\e"
+		}
+	}
+	
+	
+	//Itunes - I'm gonna go on faith from what was in Gaster's aitalk because uh... hell no I'm not downloading itunes. If it has the song name in its window class then that'd be rad.
+	ItunesOpen = FUNCTIONEX("findwin.dll","find",,"iTunes")
+	ItunesMin = FUNCTIONEX("findwin.dll","count",,"iTunes")
+	
+	if ItunesOpen == 1
+	{
+		if SeeNowPlaying == "ON"
+		{
+			WhatSong = FUNCTIONEX("findwin.dll","getcaption","iTunes")
+			NowPlaying
+		}
+		if ItunesMin == 1
+		{
+			"\0\s[102]He bobs his head to your music.\e"
+		}
+		else
+		{
+			"\0\s[202]You'd think minimizing your music player would muffle the sound, but uh,\w4\s[104] nope.\e"
+		}
+	}
+	
+	//Spotify - Google TELLS me this is what Spotify is...... I'm sure as heck not downloading it to find out |D If someone who uses spotify wants to test and let me know, that'd be super helpful
+	SpotifyOpen = FUNCTIONEX("findwin.dll","find",,"Chrome_WidgetWin_0")
+	SpotifyMin = FUNCTIONEX("findwin.dll","count",,"Chrome_WidgetWin_0")
+	ActuallySpotify = FUNCTIONEX("findwin.dll","getcaption","Chrome_WidgetWin_0")
+	if "Spotify" _in_ ActuallySpotify
+	{
+		if SpotifyOpen == 1
+		{
+			if SeeNowPlaying == "ON"
+			{
+				WhatSong = FUNCTIONEX("findwin.dll","getcaption","Chrome_WidgetWin_0")
+				NowPlaying
+			}
+			if SpotifyMin == 1
+			{
+				"\0\s[102]He bobs his head to your music.\e"
+			}
+			else
+			{
+				"\0\s[202]You'd think minimizing your music player would muffle the sound, but uh,\w4\s[104] nope.\e"
+			}
+		}
+	}
+	//VLC - This is showing me a different window class than what Gaster has... don't know why. Gonna try setting it up this way and hope it's correct.
+	VLCOpen = FUNCTIONEX("findwin.dll","find",,"Qt5QWindowIcon")
+	VLCMin = FUNCTIONEX("findwin.dll","count",,"Qt5QWindowIcon")
+	
+	if VLCOpen == 1
+	{
+		if SeeNowPlaying == "ON"
+		{
+			WhatSong = FUNCTIONEX("findwin.dll","getcaption","Qt5QWindowIcon")
+			NowPlaying
+		}
+		
+/*		if VLCMin == 1
+		{
+			"\0\s[102]VLC is open.\e"
+		}
+		else
+		{
+			"\0\s[202]You'd think minimizing your music player would muffle the sound, but uh,\w4\s[104] nope.\e"
+		}*/// Might add dialogue about watching stuff later, for now just leaving open the option of reading music out of it...
+	}
+	
+	//Windows Media Player. If you're using this, sorry, S wont be able to recognize songs from it! In my testing, windows media player does not show the song name in the window class
+	WMPOpen = FUNCTIONEX("findwin.dll","find",,"WMPlayerApp")
+	WMPMin = FUNCTIONEX("findwin.dll","count",,"WMPlayerApp")
+	
+	if WMPOpen == 1
+	{
+		if WMPMin == 1
+		{
+			"\0\s[102]He bobs his head to your music.\e"
+		}
+		else
+		{
+			"\0\s[202]You'd think minimizing your music player would muffle the sound, but uh,\w4\s[104] nope.\e"
+		}
+	}
+	
+	//Dev Pallete - note that the window class here seems to also apply to some non SSP things..... bleh. Just gotta put more checks I guess
+	DevPalleteOpen = FUNCTIONEX("findwin.dll","find",,"#32770")
+	WhichDev = FUNCTIONEX("findwin.dll","getcaption","#32770")
+	
+	if DevPalleteOpen == 1
+	{
+		if "S the Skeleton" _in_ WhichDev
+		{
+			if username == "Zichqec" || username == "Zi"
+			{
+				"\0\s[202]Making more changes?\w8\w8\s[101] Don't forget to save before you break everything again.\e"
+			}
+			else
+			{
+				"\0\s[106]Hey uh...\w8\w8 what're you up to with that dev pallete there?\e"
+			}
+		}
+		elseif "Palette" _in_ WhichDev
+		{
+			"\0\s[202]It's uh,\w4 kinda worrying, watching you dig around in someone else's code.\e"
+		}
+	/*	else
+		{
+			"\0\s[0]Something else SSP related\e"
+		}*/ //I'll add something here if I think of it, otherwise, enh.
+	}
+	
+	//Discord, and chrome I guess
+	DiscordOpen = FUNCTIONEX("findwin.dll","find",,"Chrome_WidgetWin_1")
+	DiscordMin = FUNCTIONEX("findwin.dll","count",,"Chrome_WidgetWin_1")
+	DiscordorChrome = FUNCTIONEX("findwin.dll","getcaption","Chrome_WidgetWin_1")
+	
+	if DiscordOpen == 1
+	{
+		if "Discord" _in_ DiscordorChrome
+		{
+			if DiscordMin == 1
+			{
+				if SeeDiscord == "ON"
+				{
+					DiscordorChrome = REPLACE(DiscordorChrome," - Discord","") //removes the discord bit.. hopefully
+					if "@" _in_ DiscordorChrome
+					{
+						DiscordorChrome = REPLACE(DiscordorChrome,"@","") //removes the @
+						"\0\s[104]Say hello to %(DiscordorChrome) for me!\e"
+					}
+					elseif "#" _in_ DiscordorChrome
+					{
+						"\0\s[208]A group of people?\n\n\w8\w8\s[104]Hello everyone in %(DiscordorChrome)!\e"
+					}
+				}
+			}
+		}
+		elseif "Google Chrome" _in_ DiscordorChrome
+		{
+			if DiscordMin == 1
+			{
+			""
+			}
+			else
+			{
+			""
+			}
+		}	
+	}
+}
+
+OnWhatPlayer //Aka, here's a bunch of music Zi likes...
+{
+	FoobarOpen = FUNCTIONEX("findwin.dll","find",,"{97E27FAA-C0B3-4b8e-A693-ED7881E99FC1}")
+	//FoobarMin = FUNCTIONEX("findwin.dll","count",,"{97E27FAA-C0B3-4b8e-A693-ED7881E99FC1}")
+	WinampOpen = FUNCTIONEX("findwin.dll","find",,"Winamp v1.x")
+	//WinampMin = FUNCTIONEX("findwin.dll","count",,"Winamp v1.x")
+	ItunesOpen = FUNCTIONEX("findwin.dll","find",,"iTunes")
+	//ItunesMin = FUNCTIONEX("findwin.dll","count",,"iTunes")
+	SpotifyOpen = FUNCTIONEX("findwin.dll","find",,"Chrome_WidgetWin_0")
+	ActuallySpotify = FUNCTIONEX("findwin.dll","getcaption","Chrome_WidgetWin_0") //HAHA TAKE THAT SPOTIFY
+	//SpotifyMin = FUNCTIONEX("findwin.dll","count",,"Chrome_WidgetWin_0")
+	VLCOpen = FUNCTIONEX("findwin.dll","find",,"Qt5QWindowIcon")
+	//VLCMin = FUNCTIONEX("findwin.dll","count",,"Qt5QWindowIcon")
+	
+	if FoobarOpen == 1 //Yes, this will prefer whatever is at the top of the list... not sure what I can do about that? If I think of a better solution I'll implement it later, but for now just have one music player open ya weirdo.
+	{
+		WhatSong = FUNCTIONEX("findwin.dll","getcaption","{97E27FAA-C0B3-4b8e-A693-ED7881E99FC1}")
+	}
+	elseif WinampOpen == 1
+	{
+		WhatSong = FUNCTIONEX("findwin.dll","getcaption","Winamp v1.x")
+	}
+	elseif ItunesOpen == 1
+	{
+		WhatSong = FUNCTIONEX("findwin.dll","getcaption","iTunes")
+	}
+	elseif SpotifyOpen == 1 && "Spotify" _in_ ActuallySpotify
+	{
+		WhatSong = FUNCTIONEX("findwin.dll","getcaption","Chrome_WidgetWin_0")
+	}
+	elseif VLCOpen == 1
+	{
+		WhatSong = FUNCTIONEX("findwin.dll","getcaption","Qt5QWindowIcon")
+	}
+	--
+	OnNowPlaying
+}
+
+OnNowPlaying
+{
+	WhatSong = TOLOWER(WhatSong)
+	if "starset" _in_ WhatSong
+	{
+		"\0\s[208]Starset,\w4 huh?\w8\w8\s[106] I'm not really a fan of screaming,\w4\s[104] but their softer songs are really pretty.\e"
+	}
+	elseif "laura shigihara" _in_ WhatSong
+	{
+		"\0\s[102]Laura Shigihara's music is always very soothing...\w8\w8\s[200] Maybe a little melancholy sometimes.\w8\w8\s[104] But beautiful, too.\e"
+	}
+	elseif "linkin park" _in_ WhatSong
+	{
+		"\0\s[202]A Linkin Park fan, eh?\w8\w8\s[200] I understand why people relate to it,\w4\s[107] but I don't really like to focus on heavy topics while I'm listening to music.\e"
+		if "in the end" _in_ WhatSong
+		{
+			"\0\s[510]\i[0]...\e"
+		}
+	}
+	elseif "black gryph0n" _in_ WhatSong && "fighting back" _in_ WhatSong
+	{
+		"\0\s[104]Heh, this song always makes me feel really motivated to get things done.\w8\w8\s[202] The lyrics are a little dark,\w4\s[205] but it also has a message of working together and taking care of the people you love, which I appreciate.\e"
+	}
+	elseif "vnv nation" _in_ WhatSong && "space and time" _in_ WhatSong
+	{
+		"\0\s[200]Hmm...\w8\w8\s[106] I know someone who would really relate to this song.\e"
+	}
+	elseif "owl city" _in_ WhatSong && "vanilla twilight" _in_ WhatSong
+	{
+		if thesplit == 1
+		{
+			"\0\s[204].\w4.\w4.\w4This song reminds me a lot of someone I used to know...\e"
+		}
+		else
+		{
+		"\0\s[200].\w4.\w4.\w8\w8\s[204]\e"
+		}
+	}
+	elseif "jacoo" _in_ WhatSong && "eternity" _in_ WhatSong
+	{
+		"\0\s[208].\w4.\w4.\w4Somehow this song makes me feel nostalgic for times long past...\e"
+		if thesplit == 1
+		{
+			"\s[206].\w4.\w4.\w8If only I could remember...\e"
+		}
+	}
+	elseif "skillet" _in_ WhatSong
+	{
+		if "imperfection" _in_ WhatSong
+		{
+			"\0\s[109].\w4.\w4.\w8\s[108]Kiddo, it's a good song,\w4\s[106] but I hope for your sake that you don't relate to it.\e"
+		}
+		else
+		{
+			if thesplit == 1
+			{
+				"\s[510]\i[0]This music...\w8\w8\s[510]\i[2] It almost makes me remember...\w8\w8\w8\n\s[510]\i[0]Almost...\e"
+			}
+			else
+			{
+			"\0\s[200]Mmm...\w8\w8 Something about this music is ringing a bell...\e"
+			}
+		}
+	}
+	elseif "wintergatan" _in_ WhatSong
+	{
+		"\0\s[104]Ah, I love Wintergatan.\w8\w8\s[205] They've got such beautiful music, it really transports me to another place.\e"
+		if "marble machine" _in_ WhatSong
+		{
+			"\0\s[104]Gotta love the Marble Machine song.\w8\w8\s[0] Have you seen the new Marble Machine X that's being built?\w8\w8\s[103] It's pretty amazing,\w4\s[104] can't wait to hear it play.\e"
+		}
+	}
+	elseif "palisades" _in_ WhatSong && "let down" _in_ WhatSong
+	{
+		"\0\s[201]You doing alright,\w4 %(username)?\e"
+	}
+	elseif "schmorgle" _in_ WhatSong && "bet it all" _in_ WhatSong
+	{
+		"\0\s[104]Wow, what a voice.\e"
+	}
+	elseif "five finger death punch" _in_ WhatSong && "wrong side of heaven" _in_ WhatSong
+	{
+		if LVCheck == 1
+		{
+			"\0\s[204]...And the righteous side of hell...\e"
+		}
+	}
+	elseif "hoobastank" _in_ WhatSong && "the reason" _in_ WhatSong
+	{
+		if LVCheck == 1
+		{
+		"\0\s[204]...I'm not a perfect person...\e"
+		}
+	}
+	elseif "thefatrat" _in_ WhatSong
+	{
+		if "unity" _in_ WhatSong
+		{
+			"\0\s[104]I like this song's cheery tone.\w8\w8\s[103] It's one of those songs that makes me feel like getting stuff done.\e"
+		}
+		else
+		{
+			"\0\s[104]TheFatRat makes some pretty good stuff, huh?\e"
+		}
+	}
+	elseif WhatSong _in_ SongList
+	{
+		"\0\s[103]You were playing this song before, weren't you?\w8\w8\s[104] It's pretty good.\e"
+		"\0\s[104]Oh hey, it's this song again.\e"
+	}
+	elseif WhatSong _in_ SongMemories //If you've reset... music's really memorable yknow?
+	{
+		"\0\s[1070]Hm...\w8\w8 I swear I've heard this song before...\w8\w8\s[206] But where...?\e"
+		--
+		SongList += "%(WhatSong)\n-"
+	}
+	else
+	{
+		"\0\s[202]I don't think I know this song.\e"
+		"\0\s[0]I've not heard this song before,\w4\s[102] but it's pretty good.\e"
+		--
+		SongList += "%(WhatSong)\n-" //I might add a thing later to remove the music player from this... but I can't be bothered atm until I can do that for all of them
+	}
+	
+}
+
+
+
+
+
+OnMinuteChange
+ {
+	Hourcheck
+	timeslot = GetTimeSlot //this tells the ghost what time it is so the time related conversations above will work.
+	--
+ 	if minute == 0 //These check what time it is. Here, it's seeing if the minute equals zero...
+	{
+		givenfood = 0 //resetting the cooldown on giving him food
+		giveningredients = 0 //same but with ingredients -- He doesn't get one for warm things because you need to send him home to clear that one.
+		givenwater = 0
+		complimented = 0
+		lastinteracted += 1
+		
+		if snagged > 0 //if you've accidentally pet him in the wrong spot, it'll change some things about his petting dialogue until it ticks back down to 0
+		{
+		snagged -= 1 
+		}
+		if flattered > 0
+		{
+		flattered -= 1 
+		}
+		if comforted > 0
+		{
+		comforted -= 1 
+		}
+		if talkedaboutpast > 0
+		{
+		talkedaboutpast -= 1 
+		}
+		if recentpets > 0
+		{
+		recentpets = 0 
+		}
+
+		if hour == 0
+		{
+			"\0\s[0]* (It's midnight.)\e"
+			--
+			if autoupdate == "ON"
+			{
+				"\![updatebymyself,checkonly]"
+			}
+		}
+		elseif hour == 12
+		{
+			"\0\s[0]* (It's noon.)\e"
+		}
+		else
+		{
+			"\0\s[0]* (It's %(hour12)'o clock.)\e"
+			//%(hour12) stores the time. This is a general top of the hour notification. I personally like this because it helps me keep track of time when I've been working on something, so when a ghost is all "Hey it's 3 o clock" I can be like woah really when did that happen. If you think this is annoying though, you can just delete this bit of dialogue to leave this else statement blank, or leave "" in here instead.
+		}
+	}
+	elseif minute == 25 && LV == 0
+	{
+	if hour == 8 //it's the bad time
+		{
+			"\0\s[200]* (He's staring very pointedly at the side of your screen.)\w8\w8\n\n* (Is he trying to avoid looking at your clock..?)\e"
+		}
+	elseif hour == 20 //it's the other bad time, unless you're using a 24 hour clock. This doesn't really work if you're using 24 hour. Eh.
+		{
+			"\0\s[200]* (He's staring very pointedly at the side of your screen.)\w8\w8\n\n* (Is he trying to avoid looking at your clock..?)\e"
+		}
+	}
+	//Don't touch this part.
+	elseif mikireflag == 1
+ 	{
+ 		MikireTalk
+	}
+ }
+
+//--OnSecondChange
+//Like the above, this handles what happens every time a second goes by. Most of this you will not have to touch.
+
+OnSecondChange
+ {
+	if passsec == 60
+ 		{
+	 	passsec = 0
+ 		passmin = passmin + 1
+		}
+ 	else
+ 		{
+	 	passsec = passsec + 1
+		}
+	if mikireflag == 1 && reference1 == 0
+		{
+			EndMikireTalk
+ 		}
+		mikireflag = reference1
+	if reference2 == 1
+	{
+
+	}
+ }
+ 
+Hourcheck
+ {
+	if passmin >= 60
+	{
+		passmin = 0
+		passhour += 1
+		totalhours += 1
+		if totalhours < 20 && lastinteracted > 6
+		{
+			if LV == 0
+			{
+				love += 0.5
+			}
+		}
+	}
+	--
+	if passmin <= 9
+	{
+		displaymin = "0" + passmin //[Zi]maaaaybe?? -- Yes ok this works, this makes it so the minutes on the runtime have a 0 if they're under 9, so they format correctly. This is the kind of stupid detail that bothers me a lot.
+	}
+	elseif passmin >=10
+	{
+		displaymin = passmin
+	}
+	--
+	GetSeason
+ }
+
+
+GetSeason
+{
+	//[Zi]Ok, so first off, apologies to folks in the southern hemisphere. I may add functionality for that in a later update. But to be fair, S probably doesn't know about the concept yet. Second off, I'm going to go by the meteorological seasons instead of astronomical. Why? Well..... one has static dates and the other does not. I can't give him diaogue for things like the solstice and equinox if they change every year. I COULD technically do it, but I'd have to update him every year to change the dates and that sounds terrible. SO. We're just getting a simple system instead.
+	if month > 2 && month < 6
+	{
+		season = "Spring"
+	}
+	elseif month > 5 && month < 9
+	{
+		season = "Summer"
+	}
+	elseif month > 8 && month < 12
+	{
+		season = "Autumn" 
+	}
+	else
+	{
+		season = "Winter"
+	}
+}
+
+ //---- MikireTalk ---------------------------------------------------------------------
+ //I'm actually a little fuzzy on MikireTalk and what exactly it does since it shows up a lot in odd places, but for the purposes of this function here, what this does is bring up some dialogue when the main character is off the screen. For example, if you dragged Girl over to the side of your monitor until she was partially concealed by it. This dialogue would then come up. If you don't want your characters to care, you can leave the dialogue blank.
+ 
+MikireTalk
+ {
+	 if LV == 0 //Friendship routes
+	{
+		"\0\s[301]Ah-!\w8 H-hey..!\n\n\w8\w8* (You can bring him back with\nCtrl-Shift-F12.)\e"
+	}
+	
+	elseif LV > 0 //Negative routes
+	{
+		if LVCheck == 1 //know his secrets
+		{
+			"\0\s[510]\i[1]* (He shudders.)\n\n\w8\w8* (You can bring him back with\nCtrl-Shift-F12.)\e"
+		}
+		else //Just mean for no reason
+		{
+			"\0\s[400]\i[2]*(You can feel his glare from here.)\n\n\w8\w8* (You can bring him back with\nCtrl-Shift-F12.)"
+		}
+	}
+ }
+
+ //----EndMikireTalk--------------------------------------------------------------------
+ //For after you bring the character back on screen.
+ 
+EndMikireTalk
+ {
+	 
+	 if LV == 0 //Friendship routes
+	{
+		"\0\s[301]* (He's shivering.)\w8\w8\n\n\s[201]C-can uh,\s[300] can we not ever do that again?\w8\w8\s[301] Tight spaces and I don't uh,\w8 \s[200]don't really get along.\e"
+	}
+	elseif LV > 0 //Negative routes
+	{
+		if LVCheck == 1 //know his secrets
+		{
+
+				if broken == 1 //broken him down all the way
+				{
+					"\s[510]\i[0]* (He's Shivering.)\w8\w8\n\n\s[510]\i[5]* (Good.)\e"
+				}
+				else //breaking him, but he's still standing
+				{
+					"\s[510]\i[0]* (He's Shivering.)\e"
+				}
+			
+		}
+		else //Just mean for no reason
+		{
+				"\s[400]\i[0]Tsk.\w8\w8\n\n* (He's acting like that didn't bother him, but you can see his shoulders trembling a little.\e"
+		}
+	}
+
+ }
+
+
+//**** OnSurfaceRestore *****************************************************************
+//OnSurfaceRestore is a handy function. What this does is that after a short period of time, the ghost will go back to its default pose, so you won't have a ghost stuck in one expression for too long. It's also helpful if you've made one of the characters disappear using \s[-1] in dialogue and didn't bring them back at the end of it. This will do that for you.
+//I'm going to comment out the if/else statements in this because the circumstances in which they'd come up seem pretty unlikely and unnecessary if you're just going to be making a simple ghost. You can just leave this function alone and move on if you want. However, if you do want to use them, just uncomment the lines by deleting the slashes and fill in the info as you need.
+
+//*********************Advanced User Info*******************************
+//You can put if statements in OnSurfaceRestore to make exceptions for certain poses, or to make sure that once they're in a certain pose, they stay in that pose. For example, if you turn my Hunter and Smoker ghost into eggplants, there's a check for the their eggplant pose numbers to make sure they STAY eggplants when OnSurfaceRestore is called.
+//You can also use OnSurfaceRestore to clean up things that might be left on the screen, primarily from using p[number]\s[] to call up other objects or characters. Just make sure to add a p[number]\s[-1] to OnSurfaceRestore, and that should get rid of it each time the ghost cleans itself up.
+//***********************************************************************
+
+OnSurfaceRestore
+ {
+	"\1\s[-1]"
+	 --
+	if LV == 0 //Friendship routes
+	{
+		if reference0 == 1541
+		{
+			"\0\s[102]* (Looks like he's done with the drink.)\e"
+		}
+		elseif reference0 == 1543
+		{
+			"\0\s[102]* (Looks like he's done with the drink.)\e"
+		}
+		elseif reference0 == 1545
+		{
+			if RAND(100) < 40 //If less than 40, keep reading his book. Sometimes you get really drawn in, yknow?
+			{
+				"\0\s[1060]\e"
+			}
+			else
+			{
+				"\0\s[102]* (He stores the book back in his ribcage.)\e" 
+			}
+			
+		}
+		elseif love >= 75 //High friendship
+		{
+			if reference0 == 1520 //If he's looking at his phone
+			{
+				if RAND(100) < 40 //If less than 40, keep looking at his phone. They're addictive, you know?
+				{
+					"\0\s[1090]\e"
+				}
+				else
+				{
+					lookingatphone = 0
+					"\0\s[0]\e" //normal pose, might do an (idles) thing later
+				}
+			}
+			elseif RAND(100) < 10 //If less than 10, start looking at his phone or at a book
+			{
+				{
+					lookingatphone = 1
+					"\0\s[1090]\e"
+				}
+				if givenbooks > 0 //if you've given a book he may start reading it
+				{
+				"\0\s[1060]\e"
+				}
+			}
+			else //Go back to normal
+			{
+				lookingatphone = 0
+				--
+				"\0\s[0]\e"
+				"\0\s[205]\e"
+				"\0\s[104]\e"
+				"\0\s[208]\e"
+				"\0\s[103]\e"
+			}
+		}
+		elseif love >= 20 //getting to know him a little
+		{
+			"\0\s[0]\e"
+			"\0\s[205]\e"
+			"\0\s[200]\e"
+			"\0\s[104]\e"
+			"\0\s[208]\e"
+		}
+		else //He isn't sure what to make of you yet
+		{
+			"\0\s[0]\e"
+			"\0\s[205]\e"
+			"\0\s[200]\e"
+			"\0\s[208]\e"
+			"\0\s[206]\e"
+		}
+	}
+	
+	elseif LV > 0 //Negative routes
+	{
+		if LVCheck == 1 //know his secrets
+		{
+			"\s[500]\i[0]\1\s[-1]\e"
+			"\s[500]\i[2]\1\s[-1]\e"
+			"\s[500]\i[3]\1\s[-1]\e"
+			"\s[510]\i[0]\1\s[-1]\e"
+			"\s[510]\i[2]\1\s[-1]\e"
+			"\s[510]\i[3]\1\s[-1]\e"
+			"\s[510]\i[4]\1\s[-1]\e"
+		}
+		else //Just mean for no reason
+		{
+			"\s[400]\i[4]\1\s[-1]\e"
+			"\s[400]\i[0]\1\s[-1]\e"
+			"\s[400]\i[2]\1\s[-1]\e"
+			"\s[410]\i[4]\1\s[-1]\e"
+			"\s[410]\i[0]\1\s[-1]\e"
+			"\s[410]\i[2]\1\s[-1]\e"
+		
+		}
+	}
+ }
+
+ 
+ //--OnKeyPress
+ //This defines the hotkeys your ghost will use. You can change these to whatever you want, but I don't really know why you would. I'd just leave this alone. Advanced Users can add new hotkeys attached to whatever function if you want.
+ 
+OnKeyPress
+{
+	if reference0 == "t"
+	{
+	OnAiTalk
+	}
+	elseif reference0 == "r"
+	{
+	OnLastTalk
+	}
+	elseif reference0 == "f1"
+	{
+	"\![open,readme]"
+	}
+	elseif reference0 == "n"
+	{
+		if SeeNowPlaying == "ON"
+		{
+			OnWhatPlayer
+		}
+	}
+}

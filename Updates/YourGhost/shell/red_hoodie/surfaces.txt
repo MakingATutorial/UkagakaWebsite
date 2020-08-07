@@ -1,0 +1,615 @@
+//---------------------------Surfaces.txt--------------------------
+
+surface0 //Neutral
+{
+collision0,105,50,124,62,Head
+collision1,124,63,130,77,Dent
+collision2,94,51,105,70,Cracks
+collision3,117,78,127,91,Cracks
+collision4,90,48,133,94,Face
+}
+
+//Questioning/doubtful smile
+surface101
+{
+element0,overlay,surface101.png,0,0
+
+collision0,105,50,124,62,Head
+collision1,124,63,130,77,Dent
+collision2,94,51,105,70,Cracks
+collision3,117,78,127,91,Cracks
+collision4,90,48,133,94,Face
+}
+
+//Content/eyes closed
+surface102
+{
+element0,overlay,surface102.png,0,0
+
+collision0,105,50,124,62,Head
+collision1,124,63,130,77,Dent
+collision2,94,51,105,70,Cracks
+collision3,117,78,127,91,Cracks
+collision4,90,48,133,94,Face
+}
+
+surface103 //Smiling forwards
+{
+element0,overlay,surface103.png,0,0
+
+collision0,105,50,124,62,Head
+collision1,124,63,130,77,Dent
+collision2,94,51,105,70,Cracks
+collision3,117,78,127,91,Cracks
+collision4,90,48,133,94,Face
+}
+
+surface104 //Closed eyes smiling
+{
+element0,overlay,surface104.png,0,0
+
+collision0,105,50,124,62,Head
+collision1,124,63,130,77,Dent
+collision2,94,51,105,78,Cracks
+collision3,117,78,127,91,Cracks
+collision4,90,48,133,94,Face
+}
+
+surface105 //Heart smile
+{
+element0,overlay,surface105.png,0,0
+
+collision0,105,50,124,62,Head
+collision1,124,63,130,77,Dent
+collision2,94,51,105,78,Cracks
+collision3,117,78,127,91,Cracks
+collision4,90,48,133,94,Face
+}
+
+surface106 //concern/worry
+{
+element0,overlay,surface106.png,0,0
+
+collision0,105,50,124,62,Head
+collision1,124,63,130,77,Dent
+collision2,94,51,105,70,Cracks
+collision3,117,78,127,91,Cracks
+collision4,90,48,133,94,Face
+}
+
+surface107 //Eyes closed, sweating
+{
+element0,overlay,surface107.png,0,0
+
+collision0,105,50,124,62,Head
+collision1,124,63,130,77,Dent
+collision2,94,51,105,70,Cracks
+collision3,117,78,127,91,Cracks
+collision4,90,48,133,94,Face
+}
+
+surface108 //Concerned
+{
+element0,overlay,surface108.png,0,0
+
+collision0,105,50,124,62,Head
+collision1,124,63,130,77,Dent
+collision2,94,51,105,70,Cracks
+collision3,117,78,127,91,Cracks
+collision4,90,48,133,94,Face
+}
+
+surface109 //Sigh/sleepy
+{
+element0,overlay,surface109.png,0,0
+
+collision0,105,50,124,62,Head
+collision1,124,63,130,77,Dent
+collision2,94,51,105,70,Cracks
+collision3,117,78,127,91,Cracks
+collision4,90,48,133,94,Face
+}
+
+surface110 //Mild surprise
+{
+collision0,105,50,124,62,Head
+collision1,124,63,130,77,Dent
+collision2,94,51,105,70,Cracks
+collision3,117,78,127,91,Cracks
+collision4,90,48,133,94,Face
+}
+
+
+//Look to the left, sad
+surface200
+{
+element0,overlay,surface200.png,0,0
+
+collision0,94,51,113,68,Head
+collision1,113,51,133,81,Dent
+collision2,107,79,122,92,Cracks
+collision3,91,50,133,94,Face
+}
+
+//Head to the left, looking right, sad
+surface201
+{
+element0,overlay,surface201.png,0,0
+
+collision0,94,51,113,68,Head
+collision1,113,51,133,81,Dent
+collision2,107,79,122,92,Cracks
+collision3,91,50,133,94,Face
+}
+
+//Head to the left, looking back and smiling (worried/nervous)
+surface202
+{
+element0,overlay,surface202.png,0,0
+
+collision0,94,51,113,68,Head
+collision1,113,51,133,81,Dent
+collision2,107,79,122,92,Cracks
+collision3,91,50,133,94,Face
+}
+
+//Head left, looking right with a snarl
+surface203
+{
+element0,overlay,surface203.png,0,0
+
+collision0,94,51,113,68,Head
+collision1,113,51,133,81,Dent
+collision2,107,79,122,92,Cracks
+collision3,91,50,133,94,Face
+}
+
+surface204 //Looking left, closed eyes
+{
+element0,overlay,surface204.png,0,0
+
+collision0,94,51,113,68,Head
+collision1,113,51,133,81,Dent
+collision2,107,79,122,92,Cracks
+collision3,91,50,133,94,Face
+}
+
+surface205 //Looking left, smiling
+{
+element0,overlay,surface205.png,0,0
+
+collision0,94,51,113,68,Head
+collision1,113,51,133,81,Dent
+collision2,107,79,122,92,Cracks
+collision3,91,50,133,94,Face
+}
+
+surface206 //Looking left, thinking
+{
+element0,overlay,surface206.png,0,0
+
+collision0,94,51,113,68,Head
+collision1,113,51,133,81,Dent
+collision2,107,79,122,92,Cracks
+collision3,91,50,133,94,Face
+}
+
+surface207 //Yawn
+{
+element0,overlay,surface207.png,0,0
+
+collision0,94,51,113,68,Head
+collision1,113,51,133,81,Dent
+collision2,107,79,122,92,Cracks
+collision3,91,50,133,94,Face
+}
+
+surface208 //Looking left, thinking neutral
+{
+element0,overlay,surface208.png,0,0
+
+collision0,94,51,113,68,Head
+collision1,113,51,133,81,Dent
+collision2,107,79,122,92,Cracks
+collision3,91,50,133,94,Face
+}
+
+//Looking to the right, frowning
+surface300
+{
+element0,overlay,surface300.png,0,0
+
+collision0,112,51,130,72,Head
+collision1,124,82,132,93,Cracks
+collision2,98,51,112,72,Cracks
+collision3,92,50,133,97,Face
+}
+
+//Looking to the right, flinch
+surface301
+{
+element0,overlay,surface301.png,0,0
+
+collision0,112,51,130,72,Head
+collision1,124,82,132,93,Cracks
+collision2,98,51,112,82,Cracks
+collision3,92,50,133,97,Face
+}
+
+surface302 //Looking right, eyes closed
+{
+element0,overlay,surface302.png,0,0
+
+collision0,112,51,130,72,Head
+collision1,124,82,132,93,Cracks
+collision2,98,51,112,82,Cracks
+collision3,92,50,133,97,Face
+}
+
+surface303 //Looking right, eyes up
+{
+element0,overlay,surface303.png,0,0
+
+collision0,112,51,130,72,Head
+collision1,124,82,132,93,Cracks
+collision2,98,51,112,72,Cracks
+collision3,92,50,133,97,Face
+}
+
+
+
+
+
+surface400 //arms crossed, facing left
+{
+	element0,overlay,surface400.png,0,0
+	
+	collision0,94,51,113,68,Head
+	collision1,113,51,133,81,Dent
+	collision2,107,79,122,92,Cracks
+	collision3,91,50,133,94,Face
+	
+	
+	0interval,never //Eyes closed, frown
+	0pattern0,401,0,overlay,0,0
+	
+	1interval,never //Eyes closed, snarl
+	1pattern0,402,0,overlay,0,0
+	
+	2interval,never //Eyes back, frown
+	2pattern0,403,0,overlay,0,0
+	
+	3interval,never //Eyes back, snarl
+	3pattern0,404,0,overlay,0,0
+	
+	4interval,never //Eyes away, frown
+	4pattern0,405,0,overlay,0,0
+	
+	5interval,never //Eyes away, snarl
+	5pattern0,406,0,overlay,0,0
+}
+
+surface410 //Facing forward, arms crossed
+{
+	element0,overlay,surface410.png,0,0
+	
+	collision0,105,50,124,62,Head
+	collision1,124,63,130,77,Dent
+	collision2,94,51,105,70,Cracks
+	collision3,117,78,127,91,Cracks
+	collision4,92,49,132,95,Face
+	
+	0interval,never //Eyes closed, frown
+	0pattern0,411,0,overlay,0,0
+	
+	1interval,never //Eyes closed, snarl
+	1pattern0,412,0,overlay,0,0
+	
+	2interval,never //Eyes forward, frown
+	2pattern0,413,0,overlay,0,0
+	
+	3interval,never //Eyes forward, snarl
+	3pattern0,414,0,overlay,0,0
+	
+	4interval,never //Eyes away, frown
+	4pattern0,415,0,overlay,0,0
+	
+	5interval,never //Eyes away, snarl
+	5pattern0,416,0,overlay,0,0
+}
+
+surface500 //Facing forward, hugging self
+{
+	element0,overlay,surface500.png,0,0
+	
+	collision0,102,53,116,76,Head
+	collision1,116,53,130,79,Dent
+	collision2,114,79,130,93,Cracks
+	collision3,92,56,102,85,Cracks
+	collision4,92,53,130,99,Face
+	
+	0interval,never //Eyes closed
+	0pattern0,501,0,overlay,0,0
+	
+	1interval,never //Eyes forward, fear
+	1pattern0,502,0,overlay,0,0
+	
+	2interval,never //Eyes left
+	2pattern0,503,0,overlay,0,0
+	
+	3interval,never //Eyes right
+	3pattern0,504,0,overlay,0,0
+	
+}
+
+surface510 //Facing left, hugging self
+{
+	element0,overlay,surface510.png,0,0
+	
+	collision0,96,51,115,71,Head
+	collision1,115,51,135,81,Dent
+	collision2,111,81,126,96,Cracks
+	collision3,93,51,135,96,Face
+	
+	0interval,never //Eyes closed
+	0pattern0,511,0,overlay,0,0
+	
+	1interval,never //Eyes back, fear
+	1pattern0,512,0,overlay,0,0
+	
+	2interval,never //Eyes left
+	2pattern0,513,0,overlay,0,0
+	
+	3interval,never //Eyes right
+	3pattern0,514,0,overlay,0,0
+	
+	4interval,never //Eyes down
+	4pattern0,515,0,overlay,0,0
+	
+	5interval,never //Flinch
+	5pattern0,516,0,overlay,0,0
+	
+	6interval,never //Look back
+	6pattern0,517,0,overlay,0,0
+}
+
+
+
+//Cheerful!
+surface1010
+{
+element0,overlay,surface1010.png,0,0
+
+collision0,105,50,123,71,Head
+collision1,123,56,130,79,Dent
+collision2,119,79,129,91,Cracks
+collision3,92,50,105,79,Cracks
+collision4,88,50,129,95,Face
+}
+
+surface1020 //Scratching head
+{
+element0,overlay,surface1020.png,0,0
+
+collision0,105,50,123,71,Head
+collision1,123,56,130,79,Dent
+collision2,119,79,129,91,Cracks
+collision3,92,50,105,79,Cracks
+collision4,88,50,129,95,Face
+}
+
+surface1030 //Blush
+{
+element0,overlay,surface1030.png,0,0
+
+collision0,105,50,123,71,Head
+collision1,123,56,130,79,Dent
+collision2,119,79,129,91,Cracks
+collision3,92,50,105,79,Cracks
+collision4,88,50,129,95,Face
+}
+
+surface1040 //drinking water
+{
+element0,overlay,surface1040.png,0,0
+
+collision0,105,50,124,62,Head
+collision1,124,63,130,77,Dent
+collision2,94,51,105,70,Cracks
+collision3,117,78,127,91,Cracks
+collision4,90,48,133,94,Face
+
+0interval,random
+0pattern0,1041,250,replace,0,0
+0pattern1,1040,75,replace,0,0
+
+1interval,random
+1pattern0,1041,250,replace,0,0
+1pattern1,1040,245,replace,0,0
+}
+
+surface1050 //drinking juice
+{
+element0,overlay,surface1050.png,0,0
+
+collision0,105,50,124,62,Head
+collision1,124,63,130,77,Dent
+collision2,94,51,105,70,Cracks
+collision3,117,78,127,91,Cracks
+collision4,90,48,133,94,Face
+
+0interval,random
+0pattern0,1051,250,replace,0,0
+0pattern1,1050,75,replace,0,0
+
+1interval,random
+1pattern0,1051,250,replace,0,0
+1pattern1,1050,245,replace,0,0
+}
+
+surface1060 //reading book
+{
+element0,overlay,surface1060.png,0,0
+
+collision0,105,50,124,62,Head
+collision1,124,63,130,77,Dent
+collision2,94,51,105,70,Cracks
+collision3,117,78,127,91,Cracks
+collision4,90,48,133,94,Face
+
+
+1interval,random,10
+1pattern0,-1,0,overlay,0,0
+1pattern2,1061,0,overlayfast,0,0
+1pattern3,-1,500,overlay,0,0
+	
+2interval,random,10
+2pattern0,-1,0,overlay,0,0
+2pattern2,1062,0,overlayfast,0,0
+2pattern3,-1,500,overlay,0,0
+	
+3interval,random,10
+3pattern0,-1,0,overlay,0,0
+3pattern2,1063,0,overlayfast,0,0
+3pattern3,-1,500,overlay,0,0
+
+}
+
+//Thinking
+surface1070
+{
+element0,overlay,surface1070.png,0,0
+
+collision0,106,50,124,70,Head
+collision1,124,50,131,74,Dent
+collision2,117,79,126,91,Cracks
+collision3,95,50,106,75,Cracks
+collision4,91,50,131,95,Face
+}
+
+surface1071 //Nom nom
+{
+element0,overlay,surface1071.png,0,0
+
+collision0,106,50,124,70,Head
+collision1,124,50,131,74,Dent
+collision2,117,79,126,91,Cracks
+collision3,95,50,106,75,Cracks
+collision4,91,50,131,95,Face
+}
+
+surface1080 //hug
+{
+element0,overlay,surface1080.png,0,0
+
+collision0,105,50,123,71,Head
+collision1,123,56,130,79,Dent
+collision2,119,79,129,91,Cracks
+collision3,92,50,105,79,Cracks
+collision4,88,50,129,95,Face
+}
+
+surface1090 //Phone random
+{
+	element0,overlay,surface1090.png,0,0 //Neutral face is the base
+	collision0,107,49,124,73,Head
+	collision1,124,49,131,73,Dent
+	collision2,121,73,131,94,Cracks
+	collision3,92,49,107,73,Cracks
+	collision4,92,49,131,94,Face
+	
+	
+	
+	0interval,always //Phone up and down
+	0pattern0,1091,0,overlay,0,0
+	0pattern1,1091,100,overlay,0,0
+	0pattern2,1092,10,overlay,0,0
+	0pattern3,1091,200,overlay,0,0
+	0pattern4,1092,10,overlay,0,0
+	0pattern5,1091,150,overlay,0,0
+	0pattern6,1092,10,overlay,0,0
+	0pattern7,1091,40,overlay,0,0
+	0pattern8,1092,10,overlay,0,0
+	
+	//[Zi]I tried writing my own bit for these expressions, but it wasn't working right so I just pilfered some from Gaster. And hey, what do you know, worked first try. Thanks Zar for your impeccably made ghosts that I can study
+	1interval,random,10 //Closed eyes smile
+	1pattern0,-1,0,overlay,0,0
+	1pattern2,1093,0,overlayfast,0,0
+	1pattern3,-1,500,overlay,0,0
+	
+	2interval,random,10 //Blush
+	2pattern0,-1,0,overlay,0,0
+	2pattern2,1094,0,overlayfast,0,0
+	2pattern3,-1,500,overlay,0,0
+	
+	3interval,random,10 //Frown
+	3pattern0,-1,0,overlay,0,0
+	3pattern2,1095,0,overlayfast,0,0
+	3pattern3,-1,500,overlay,0,0
+}
+
+surface1100 //Startled/Alarm
+{
+element0,overlay,surface1100.png,0,0
+
+collision0,106,49,123,68,Head
+collision1,123,49,131,78,Dent
+collision2,118,78,131,91,Cracks
+collision3,95,49,106,71,Cracks
+collision4,92,50,131,93,Face
+}
+
+//Appearing first boot
+surface1110
+{
+element0,overlay,surface1110.png,0,0
+0interval,runonce
+0pattern0,1111,10,replace,0,0
+0pattern1,1112,10,replace,0,0
+0pattern2,208,13,replace,0,0
+
+}
+
+surface1122 //Appear normal
+{
+element0,overlay,surface1110.png,0,0
+0interval,runonce
+0pattern0,1111,100,replace,0,0
+0pattern1,1122,100,replace,0,0
+0pattern2,0,130,replace,0,0
+
+}
+
+//SMACK and by that I mean punching animation
+surface1550
+{
+	element0,overlay,surface1550.png,0,0
+	0interval,runonce
+	0pattern0,1551,15,replace,0,0
+	
+	collision0,80,53,96,80,Head
+	collision1,96,53,108,77,Dent
+	collision2,94,77,105,96,Cracks
+	collision3,68,57,80,88,Cracks
+	collision4,68,54,109,102,Face
+}
+
+
+//===Tooltips===
+sakura.tooltips
+{
+ //Head,Looks pettable... if you're careful.  -- I'm gonna comment this out for what I'm guessing is the same reason it's commented out on Zarla's Gaster. It pops up too quickly and gets in the way. I wish I could give it more of a delay...
+ Cracks,Be careful!
+ Dent,Be careful!
+}
+
+
+
+//--The Side Character's poses------------------
+//I actually intended to do the same thing here with Triangle's default pose as I did with Girl, but then I remembered that he has no mouth, so he can't even use talking frames, haha. He can however use blinking frames! So I'm going to copy the same blinking chunk from surface0 and put it here.
+
+surface10
+{
+element0,overlay,surface10.png,0,0
+}
+

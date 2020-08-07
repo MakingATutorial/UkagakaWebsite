@@ -1,0 +1,98 @@
+charset,UTF-8
+version,1
+option,DisableNoDefineSurfaces
+
+//Alright, let's see if I can figure this out. It might be handy to help me find surfaces I need faster.
+//Woah, already this clears out all the images from the list! That's super convenient in itself!
+
+//---Parts---
+group,__disabled
+{
+	9999,__parts
+}
+
+
+//---Gaster---
+//This basically appears in the surface test as groupname, pose name. So G/Idle Left. VERY little space to work with here. Keep as short as possible.
+group,SF
+{
+	scope,0
+	
+	0,Default
+	101,Questioning
+	102,Content
+	103,Grin
+	104,EyesClosedSmile
+	105,HeartSmile
+	106,NervousSmile
+	107,-u-;
+	108,Concern
+	109,TiredSigh
+	110,MildSurprise
+}
+
+group,SL
+{
+	scope,0
+
+	200,LookAway
+	201,LookBack
+	202,NervousGrin
+	203,Snarl
+	204,RegretClosedEyes
+	205,Daydream
+	206,ThinkingWorry
+	207,Yawn
+	208,ThinkingNeutral
+	
+}
+
+group,SR
+{
+	scope,1
+
+	300,EyesAway
+	301,Flinch
+	302,EyesClosed
+	303,EyesUp
+	
+}
+
+group,SM
+{
+	scope,1
+
+	400,Left
+	410,Forward
+	
+}
+
+group,SSd
+{
+	scope,1
+
+	500,Forward
+	510,Left
+	
+}
+
+group,SSp
+{
+	scope,1
+
+	1010,Smile
+	1020,ScratchHead
+	1030,Blush
+	1040,Water
+	1050,Juice
+	1060,Book
+	1070,Thinking
+	1071,Nom
+	1080,Hug
+	1090,Phone
+	1100,Alarm
+	1110,FirstBloopIn
+	1122,BloopIn
+	1550,Punch
+	
+}

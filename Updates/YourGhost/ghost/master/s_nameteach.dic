@@ -1,0 +1,131 @@
+﻿//---------------------------The User's Name--------------------------
+//This .dic file has to do with setting the user's name and suffix/prefix. You may recall some of the functions mentioned here from bootend.dic. As you can see, you can spread functions across multiple .dic files if you like! Just remember my note in bootend.dic about the different between OnFunction and Function.
+
+//This file is fairly short, so don't worry! It shouldn't take you too long to finish.
+
+//Make sure to read the walkthrough (http://www.ashido.com/ukagaka/walkthrough.html) for more details about how to properly format ghost dialogue!
+//I will reiterate that you should be editing these in Notepad++, and in particular, you should set the Language to C (or Java I guess) to properly highlight all the text. It will make things A LOT EASIER for you, trust me! It will also help you keep track of your brackets in case you forget some. If you click on a line with a bracket in Notepad++, it should highlight where the other bracket ends, or turn purple if there's no finishing bracket (which you should definitely fix!)
+//It will also highlight my commented lines in green, so you'll know where they are. Any line beginning with // is a commented line that the code will not read. It's just for your reference!
+
+
+//--OnTeachName
+//This is called from the config menu in the main character's double click menu when the user says they want to change their name. If you look in menu.dic you'll see the code leading to here.
+
+OnTeachName	
+{
+	if reference0 == "TEACHNAME" //ignore this
+		{
+			if LV == 0
+			{
+				"\0\s[110]Oh, you want to change your name?\w8\w8\s[1010] Ok, what should I call you then?\![open,inputbox,OnNameTeach,-1]\e"
+			}
+			else
+			{
+				"\0\s[510]\i[0]...What should I call you?\![open,inputbox,OnNameTeach,-1]"
+			}
+		//This is the bit of dialogue you can rewrite if you want. Note that this line ends with \![open,inputbox,OnNameTeach,-1]. You may recognize this from bootend.dic. Essentially, this will lead to the next function. Make sure you don't delete that tag! The rest you can do whatever with though.
+		}
+	else
+		{
+		//This else statement is empty, and I'm mostly pointing this out to mention that you can do this too with your if/elses if you want! An empty else will simply cause your ghost not to do anything. I wouldn't get too crazy with this though.
+		}
+}
+
+
+OnNameTeach
+{
+	tempname = reference0 //this stores the name value temporarily in reference0
+	reference0 = TOLOWER(reference0) //changes it to lowercase
+	reference0 = REPLACE(reference0," ","") //removes spaces
+	reference0 = REPLACE(reference0,".","") //removes periods
+	reference0 = REPLACE(reference0,"-","") //removes dashes [Zi] I thought I was going to be clever and grab the lowercase thing from Gaster's input box, but then I went to check his nameteach and lo and behold, Zarla beat me to it and also added more... welp, might as well use it I guess
+	if LV == 0
+	{
+		if tempname == username
+		{
+			"\0\s[106]That's uh...\w8\w8 the name you gave me before, kiddo.\w8\w8\s[202] You change your mind, or something?\e"
+		}
+		elseif reference0 == "s"
+		{
+			"\0\s[107]C'mon,\w4 kid,\w4 you can't just tell me my own name.\w8\w8\s[106] Try again.\![open,inputbox,OnNameTeach,-1]"
+		}
+		elseif reference0 == ""
+		{
+			username = "kid"
+		
+			"\0\s[106]Oh, uh...\w8\w8\s[107] I guess I'll just call you kid, then, if that's alright.\w8\w8\s[202] Let me know if you want to change it.\e"
+		//You can change this snip to whatever.
+		}
+		elseif reference0 == "wd" || reference0 == "dings" || reference0 == "wings" || reference0 == "barcode" || reference0 == "blue jeans" || reference0 == "abbi" || reference0 == "rosie" || reference0 == "rosella" || reference0 == "roman" || reference0 == "cambria" || reference0 == "triton" || reference0 == "lulo" || reference0 == "azo" ||reference0 == "sigil" || reference0 == "elko"
+		{
+			"\0\s[110]Oh,\w4 uh...\w8\w8\s[104] Huh.\w8\w8 How about that.\w8\w8\c"
+			--
+			NameDone
+		}
+		elseif reference0 == "rys0825" || reference0 == "0825" || reference0 == "abi0219" || reference0 == "0219" || reference0 == "dw"
+		{
+			knowmorethanyoushould = 1 //dont know if I'll use this or not but it's here
+			"\0\s[204]...No.\w8\w8 Give me something else.\![open,inputbox,OnNameTeach,-1]"
+		}
+		elseif reference0 == "zichqec"
+		{
+			"\0\s[1070]Huh...\w8\w8 Strange.\w8\w8\s[106] How exactly do you pronounce that?\w8\w8 Anyways...\w8\w8\c"
+			--
+			NameDone
+		}
+		elseif reference0 == "zi"
+		{
+			"\0\s[1070]Huh...\w8\w8 That's familiar somehow.\w8\w8 Anyways...\w8\w8\c"
+			--
+			NameDone
+		}
+		else
+		{
+			NameDone
+		}
+	}
+	else //[Zi] I'm going to be honest with you, I don't really see much point in the title system. If the user wants a title, they can just.... type in what they want. So I've erased that entirely. ALSO, this should be set so that if you've broken him, he'll call you anything, even his own name. Not that he'll actually ever call you by name at that point... but he'll just accept anything you put in.
+	{
+		NameDone
+	}
+}
+	//*********************Advanced User Info*******************************
+	//Adding new titles for your users to use is simply a matter of copy and pasting creatively. You can see how the ghost puts together the title and your name in the Select. sections below. Above, you simply need to add a new option and link it to a new Select. For example, you could add "\![*]\q[Mistress,titlemistress]\n/" between Ms. and Lady up there, then write up a Select.titlemistress below that fits the pattern of the others.
+	
+	//If you are removing the pronoun system entirely, what you'd want to do is erase everything in that else statement above regarding titles and replace it with something like this.
+	//else
+	//{
+	//username = tempname
+	//"\0\s[0]The user is now called %(username).\e"
+	//}
+	//***********************************************************************
+	
+	//The following Select.title[word] functions add the title to the user's name, then go to the final step, NameDone. You don't have to touch any of these. Advanced users, notice how these match the linked functions in the choices above.
+	
+
+//--NameDone
+//This is the final bit of dialogue your ghosts will have when the user changes their name.
+
+NameDone
+{
+		username = tempname
+		if LV == 0
+		{
+			"\0\s[104]Ok, I'll call you %(username) then."
+			--
+			if booting == 0
+			{
+				"\e"
+			}
+			else
+			{
+				booting = 0
+				"\w8\w8\s[0] Good to meet you.\w8\w8\s[205]\n\nI guess I'll just hang out here for the time being, if you don't mind.\e"
+			}
+		}
+		else
+		{
+			"\0\s[510]\i[0]Ok, I'll call you %(username) from now on.\e"
+		}
+		//Rewrite this as you like. Note the %(username) tag here, as you should be well familiar with by now from the walkthrough and the other .dic files. That will display the name the user just created.
+}

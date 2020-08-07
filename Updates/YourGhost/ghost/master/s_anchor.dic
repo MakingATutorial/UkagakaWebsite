@@ -1,0 +1,355 @@
+//---------------------------Anchors and OnTranslate--------------------------
+
+//This .dic file is for setting up anchor words, which are links to set conversations attached to certain words automatically. It also deals with OnTranslate, which is a fairly unique function. All text goes through OnTranslate first before it displays on your ghost, which is how it knows to turn certain words into links. Before you try it yourself, I've already tried adding automatic \w8 pauses after periods and that totally breaks everything.
+//Why should I care about anchor words, you ask? Or what can I use them for? Well, you can set up anchor words to easy explanations for things your ghost might talk about that might confuse your user. People they know, places they've been, pop culture references the user might not get, information about you the creator or the world the characters from, items in an item menu, basically any number of things. Anchor words can be a handy repository of information! Or just an easy way to set up some cheap jokes. The power is yours!
+
+//Make sure to read the walkthrough (http://www.ashido.com/ukagaka/walkthrough.html) for more details about how to properly format ghost dialogue!
+//I will reiterate that you should be editing these in Notepad++, and in particular, you should set the Language to C to properly highlight all the text. It will make things A LOT EASIER for you, trust me! It will also help you keep track of your brackets in case you forget some. If you click on a line with a bracket in Notepad++, it should highlight where the other bracket ends, or turn purple if there's no finishing bracket (which you should definitely fix!)
+//It will also highlight my commented lines in green, so you'll know where they are. Any line beginning with // is a commented line that the code will not read. It's just for your reference!
+
+//This file is very short, so don't worry! And if you aren't planning on using anchor words, you just have to delete a few things and you'll be done!
+
+
+//--OnTranslate
+
+//As I said above, OnTranslate filters through all the text your ghost displays and does whatever you specify to it. This is a powerful function that can be used in a lot of creative ways I bet, but I wouldn't mess with it too much since you can pretty easily break stuff.
+//If you're not interested in any anchor words, delete all the lines that start with _talk = REPLACE under OnTranslate.
+
+OnTranslate
+	{
+	_talk = reference0
+	
+	//Proper names
+	_talk = REPLACE(_talk, "anWD", "\_a[FAwd]WD\_a")
+	_talk = REPLACE(_talk, "anDings", "\_a[FAdings]Dings\_a")
+	_talk = REPLACE(_talk, "anWings", "\_a[FAwings]Wings\_a")
+ 	_talk = REPLACE(_talk, "anBarcode", "\_a[FAbarcode]Barcode\_a")
+	_talk = REPLACE(_talk, "anBlue", "\_a[FAbluejeans]Blue\_a")
+	_talk = REPLACE(_talk, "anBluJeans", "\_a[FAbluejeans]Blue Jeans\_a")
+	_talk = REPLACE(_talk, "anAbbi", "\_a[FAabbi]Abbi\_a")
+	_talk = REPLACE(_talk, "anRosie", "\_a[FArosie]Rosie\_a")
+	_talk = REPLACE(_talk, "anRoman", "\_a[FAroman]Roman\_a")
+	_talk = REPLACE(_talk, "anCambria", "\_a[FAcambria]Cambria\_a")
+	_talk = REPLACE(_talk, "anTriton", "\_a[FAtriton]Triton\_a")
+ 	_talk = REPLACE(_talk, "anLulo", "\_a[FAlulo]Lulo\_a")
+ 	_talk = REPLACE(_talk, "anAzo", "\_a[FAazo]Azo\_a")
+	_talk = REPLACE(_talk, "anSigil", "\_a[FAsigil]Sigil\_a")
+	_talk = REPLACE(_talk, "anElko", "\_a[FAelko]Elko\_a")
+	
+	//Relation names
+	_talk = REPLACE(_talk, "anhusband", "\_a[FAbluejeans]husband\_a")
+	_talk = REPLACE(_talk, "anMySister", "\_a[FArosie]my sister\_a")
+	_talk = REPLACE(_talk, "andad", "\_a[FAwd]dad\_a")
+	_talk = REPLACE(_talk, "anmom", "\_a[FAbarcode]mom\_a")
+	
+	//Choice markers in the family menu - These all have 'Familymenu' on the end so that it'll add an 'ask about someone else' at the bottom of the text. That way, if you click on an anchor when he's just talking randomly, it wont take you back to the menu because that'd be weird, but if you click on an anchor in the family menu it'll take you back to the family menu. Not super important, but.... QoL yknow?
+	_talk = REPLACE(_talk, "anIWD", "\_a[FAwdFamilymenu]\![*]\_a")
+	_talk = REPLACE(_talk, "anIDings", "\_a[FAdingsFamilymenu]\![*]\_a")
+	_talk = REPLACE(_talk, "anIWings", "\_a[FAwingsFamilymenu]\![*]\_a")
+ 	_talk = REPLACE(_talk, "anIBarcode", "\_a[FAbarcodeFamilymenu]\![*]\_a")
+	_talk = REPLACE(_talk, "anIBlue", "\_a[FAbluejeansFamilymenu]\![*]\_a")
+	_talk = REPLACE(_talk, "anIBluJeans", "\_a[FAbluejeansFamilymenu]\![*]\_a")
+	_talk = REPLACE(_talk, "anIAbbi", "\_a[FAabbiFamilymenu]\![*]\_a")
+	_talk = REPLACE(_talk, "anIRosie", "\_a[FArosieFamilymenu]\![*]\_a")
+	_talk = REPLACE(_talk, "anIRoman", "\_a[FAromanFamilymenu]\![*]\_a")
+	_talk = REPLACE(_talk, "anICambria", "\_a[FAcambriaFamilymenu]\![*]\_a")
+	_talk = REPLACE(_talk, "anITriton", "\_a[FAtritonFamilymenu]\![*]\_a")
+ 	_talk = REPLACE(_talk, "anILulo", "\_a[FAluloFamilymenu]\![*]\_a")
+ 	_talk = REPLACE(_talk, "anIAzo", "\_a[FAazoFamilymenu]\![*]\_a")
+	_talk = REPLACE(_talk, "anISigil", "\_a[FAsigilFamilymenu]\![*]\_a")
+	_talk = REPLACE(_talk, "anIElko", "\_a[FAelkoFamilymenu]\![*]\_a")
+	
+	//Proper names, but being accessed through the family menu. They also have the 'Ask about someone else' button on the end of em. I don't need all of these, but I might as well be thorough...
+	_talk = REPLACE(_talk, "anMWD", "\_a[FAwdFamilymenu]WD\_a")
+	_talk = REPLACE(_talk, "anMDings", "\_a[FAdingsFamilymenu]Dings\_a")
+	_talk = REPLACE(_talk, "anMWings", "\_a[FAwingsFamilymenu]Wings\_a")
+ 	_talk = REPLACE(_talk, "anMBarcode", "\_a[FAbarcodeFamilymenu]Barcode\_a")
+	_talk = REPLACE(_talk, "anMBlue", "\_a[FAbluejeansFamilymenu]Blue\_a")
+	_talk = REPLACE(_talk, "anMBluJeans", "\_a[FAbluejeansFamilymenu]Blue Jeans\_a")
+	_talk = REPLACE(_talk, "anMAbbi", "\_a[FAabbiFamilymenu]Abbi\_a")
+	_talk = REPLACE(_talk, "anMRosie", "\_a[FArosieFamilymenu]Rosie\_a")
+	_talk = REPLACE(_talk, "anMRoman", "\_a[FAromanFamilymenu]Roman\_a")
+	_talk = REPLACE(_talk, "anMCambria", "\_a[FAcambriaFamilymenu]Cambria\_a")
+	_talk = REPLACE(_talk, "anMTriton", "\_a[FAtritonFamilymenu]Triton\_a")
+ 	_talk = REPLACE(_talk, "anMLulo", "\_a[FAluloFamilymenu]Lulo\_a")
+ 	_talk = REPLACE(_talk, "anMAzo", "\_a[FAazoFamilymenu]Azo\_a")
+	_talk = REPLACE(_talk, "anMSigil", "\_a[FAsigilFamilymenu]Sigil\_a")
+	_talk = REPLACE(_talk, "anMElko", "\_a[FAelkoFamilymenu]Elko\_a")
+	
+		if reference1 == "" && reference2 == "" { //send input box : no event (ref2) , no special flag (ref1)
+            EVAL('"' + REPLACE(_talk,'"','" + CHR(0x22) + "') + '"')
+        }
+        else { //event result from ghost
+            TOSTR(_talk)
+        }
+	}
+	
+	//Some brief explanation about what's going on in those REPLACE lines! Basically, the function looks through the script and looks for a defined word or set of words. In this case, it's "Anchor 1". It then replaces "Anchor 1" with the second set of text, "\_a[anchor1]Anchor 1\_a". \_a if you recall is the dialogue code for linking something, so this is linking the words Anchor 1 to something called anchor1 set up in the next function, OnAnchorSelect.
+	//This is being used to change a word into a link, but you could conceivably use this to replace any text with any other kind of text if you wanted. I tried to replace . with .\w8  as I mentioned above which did not turn out well, haha, but there are probably other ways this could be used successfully.
+
+	
+//--OnAnchorSelect
+//OnAnchorSelect runs whenever someone clicks one of the links as specified above, or a link that begins with http://.
+
+OnAnchorSelect //[Zi] Alright so... I decided to rewrite this. I didn't see a reason to use case/when because you apparently can't do when "thing" || when "other thing"... and I didn't want to double the size of this section for what I needed to do. using _in_ and just being careful with how I write my anchors seems like a cleaner solution.
+{
+	if "http://" _in_ reference0 //checking to see if the link is a web address
+	{
+	"\j[%(reference0)]\e" // \j is a tag that will open a specified url in the user's browser of choice. This basically just tells the ghost to open the webpage stored in reference0, which would be the address that the user just clicked. I didn't get too much into \j in the walkthrough page because I have literally never used it except here.
+	}	
+	elseif "FA" _in_ reference0 //Family Anchor. I don't know if I'll have other anchor words, but anything with FA is asking about a family member and should end with the 'I'm done' button
+	{
+		if "wd" _in_ reference0
+		{
+			if askedaboutwd == 0
+			
+			{
+				askedaboutwd = 1
+				love += 4
+				knowaboutfamily = 1
+			}
+			
+			"\b2\_b[img\P01WD.png,centerx,10]\n\n\n\n\n\n\n\n\n\0\s[103]WD is my dad.\w8\w8\s[300] We didn't actually know each other all that well until after we started the farm.\w8\w8\s[303] It's uh,\w4 complicated.\n\n\w8\s[103]But I'm really glad to have him around,\s[0] he's sort of a stabilizing presence in the house and helps to keep the others from getting at each other's throats too much."
+		}
+		elseif "dings" _in_ reference0
+		{
+			if askedaboutdings == 0
+			{
+				askedaboutdings = 1
+				love += 4
+				knowaboutfamily = 1
+			}
+			"\b2\_b[img\P02Dings.png,centerx,10]\n\n\n\n\n\n\n\n\n\0\s[0]Dings is my uncle.\w8\w8\s[300] He's uh...\w8 pretty quiet and solitary.\w8\w8\s[200] The only people he really gets along with are his sister"
+			--
+			if askedaboutwings == 1
+			{
+				" anMWings"
+			}
+			--
+			", and her son"
+			--
+			if askedaboutroman == 1
+			{
+				" anMRoman"
+			}
+			--
+			".\w8\s[202] ...Maybe sometimes his brother"
+			--
+			if askedaboutwd == 1
+			{
+				" anMWD"
+			}
+			--
+			", too.\w8\w8\n\n\s[1010]We're glad to have him around anyways, he's a part of the family."
+		}
+		elseif "wings" _in_ reference0
+		{
+			if askedaboutwings == 0
+			{
+				askedaboutwings = 1
+				love += 4
+				knowaboutfamily = 1
+			}
+			"\b2\_b[img\P03Wings.png,centerx,10]\n\n\n\n\n\n\n\n\n\0\s[1010]Wings is my aunt.\w8\w8\s[0] She has very strong healing magic and works as a doctor at the local hospital.\w8\w8\s[300] Not all humans trust a monster to be their doctor yet,\s[104] but that doesn't stop her.\w8\s[0]\n\nShe's very no-nonsense when it comes to that stuff."
+		}
+		elseif "barcode" _in_ reference0
+		{
+			if askedaboutbarcode == 0
+			{
+				askedaboutbarcode = 1
+				love += 4
+				knowaboutfamily = 1
+			}
+			"\b2\_b[img\P04Barcode.png,centerx,10]\n\n\n\n\n\n\n\n\n\0\s[1010]Barcode is my mom!\w8\w8\s[103] She likes to build and repair things, and is always tinkering with stuff.\w8\s[103] If an appliance ever breaks, she's the one you should go to.\w8\s[0] It'll be good as new before you know it.\w8\w8\n\n\s[202]I hear she used to build new stuff out of scraps from the dump in Waterfall, too.\w8\s[103] She's definitely one of the most resourceful people around here."
+		}
+		elseif "bluejeans" _in_ reference0
+		{
+			if askedaboutbluejeans == 0
+			{
+				askedaboutbluejeans = 1
+				love += 4
+				knowaboutfamily = 1
+			}
+			"\b2\_b[img\P05BlueJeans.png,centerx,10]\n\n\n\n\n\n\n\n\n\0\s[105]Blue Jeans is my wonderful husband.\w8\w8\s[0] He does a lot of the large scale work on the farm,\s[106] so he's usually not around the house too much.\w8\w8\s[1010] But he's always sure to spend a little time with me each day, and makes sure I'm doing ok.\w8\s[104] I'd be lost without him."
+		}
+		elseif "abbi" _in_ reference0
+		{
+			if askedaboutabbi == 0
+			{
+				askedaboutabbi = 1
+				love += 4
+				knowaboutfamily = 1
+			}
+			"\b2\_b[img\P06Abbi.png,centerx,10]\n\n\n\n\n\n\n\n\n\0\s[0]Abbi is my brother.\w8\w8\s[200] He's... a little fragile.\w8 He always has been.\w8\w8\s[202] But \s[0]now that "
+			--
+			if askedaboutbarcode == 1
+			{
+				"anMBarcode"
+			}
+			else
+			{
+			"my mom"
+			}
+			--
+			" and "
+			--
+			if askedaboutwings == 1
+			{
+				"anMWings"
+			}
+			else
+			{
+			"my aunt" 
+			}
+			--
+			" are here, they've been able to help him with regular healing sessions.\w8\w8\n\n\s[1010]He's been getting more and more confident, and I'm glad to see it."
+		}
+		elseif "rosie" _in_ reference0
+		{
+			if askedaboutrosie == 0
+			{
+				askedaboutrosie = 1
+				love += 4
+				knowaboutfamily = 1
+			}
+			"\b2\_b[img\P07Rosie.png,centerx,10]\n\n\n\n\n\n\n\n\n\0\s[1010]Rosie's my sister.\w8\w8 \s[202]She's very energetic, unlike me.\w8\s[1010] Maybe it's because she's still just a kid.\w8\w8\n\n\s[101]...What?\w8\w8\s[202] Oh, the age gap between us?\w8\s[101] Skeletons live a very long time,\w4 it's not that weird that my parents decided to have another kid."
+		}
+		elseif "roman" _in_ reference0
+		{
+			if askedaboutroman == 0
+			{
+				askedaboutroman = 1
+				love += 4
+				knowaboutfamily = 1
+			}
+			"\b2\_b[img\P08Roman.png,centerx,10]\n\n\n\n\n\n\n\n\n\0\s[200]Roman is...\w8 I guess he'd be my cousin.\w8\w8\s[1010]  He's still just a toddler,\w4"
+			--
+			if askedaboutwings == 1
+			{
+				" he's anMWings's kid."
+			}
+			else
+			{
+				" he's my aunt's kid."
+			}
+			--
+			"\w8\w8\s[101] Though from how protective "
+			--
+			if askedaboutdings == 1
+			{
+				"anMDings"
+			}
+			else
+			{
+				"my uncle"
+			}
+			--
+			" is of him, it would be very easy to get that wrong.\w8\w8\n\n\s[202]Seriously, don't even think about harming that child in any way.\w8 You'll regret it before you have a chance to actually do anything."
+		}			
+		elseif "cambria" _in_ reference0
+		{
+			if askedaboutcambria == 0
+			{
+				askedaboutcambria = 1
+				love += 4
+				knowaboutfamily = 1
+			}
+			"\b2\_b[img\P09Cambria.png,centerx,10]\n\n\n\n\n\n\n\n\n\0\s[103]Cambria is my eldest child.\w8\w8\s[0] She's very bright,\s[1010] she's actually planning to become a doctor like her great aunt"
+			--
+			if askedaboutwings == 1
+			{
+				" anMWings"
+			}
+			--
+			".\w8\w8\n\n\s[205]She's definitely got the aptitude for healing, I think she could do it if she really puts her mind to it.\w8\s[104] I'm very proud of her."
+		}
+		elseif "triton" _in_ reference0
+		{
+			if askedabouttriton == 0
+			{
+				askedabouttriton = 1
+				love += 4
+				knowaboutfamily = 1
+			}
+			"\b2\_b[img\P10Triton.png,centerx,10]\n\n\n\n\n\n\n\n\n\0\s[205]Triton is my oldest son, but he doesn't like to acknowledge it directly.\w8\w8\s[200] I think he feels like he owes us a debt for taking him in and adopting him.\w8\n\n\s[202]He really doesn't, and even if he did, he's more than repaid it with the work he's done on the farm.\w8\s[104] The kid is brilliant with plants.\w8\w8\s[106] It probably helps that he's a water elemental."
+		}
+		elseif "lulo" _in_ reference0
+		{
+			if askedaboutlulo == 0
+			{
+				askedaboutlulo = 1
+				love += 4
+				knowaboutfamily = 1
+			}
+			"\b2\_b[img\P11Lulo.png,centerx,10]\n\n\n\n\n\n\n\n\n\0\s[0]Ah... Lulo is the middle child.\w8\w8\s[103] She's a very sweet, quiet girl.\w8\s[202] Much the opposite of her older sister"
+			--
+			if askedaboutcambria == 1
+			{
+				" anMCambria"
+			}
+			--
+			".\w8\w8\n\n\s[200]...She was born prematurely, and has always been very sickly since she was little.\w8\s[300] She spends a lot of time asleep, to make up for the.\w8.\w8.\w8\w8\s[301] issue.\w8\s[1100]\n\nBut,\w4 ah,\w4\s[106] she's a very imaginitive kid.\w8\s[1010] She has very vivid dreams, and she likes to tell me all about the things she imagines there."
+		}
+		elseif "azo" _in_ reference0
+		{
+			if askedaboutazo == 0
+			{
+				askedaboutazo = 1
+				love += 4
+				knowaboutfamily = 1
+			}
+			"\b2\_b[img\P12Azo.png,centerx,10]\n\n\n\n\n\n\n\n\n\0\s[103]Azo's my youngest son.\w8\w8\s[0] He's only a few years old, so we're not sure what sort of direction he's going to go yet.\w8\w8\s[1010] But he's very energetic and outgoing, and I hope he can keep that energy as he grows."
+		}
+		elseif "sigil" _in_ reference0
+		{
+			if askedaboutsigil == 0
+			{
+				askedaboutsigil = 1
+				love += 4
+				knowaboutfamily = 1
+			}
+			"\b2\_b[img\P13Sigil.png,centerx,10]\n\n\n\n\n\n\n\n\n\0\s[1010]Sigil's my youngest daughter, she's still a toddler.\w8\w8\s[106] She uh, loves fingerpainting.\w8 A lot.\w8\w8\s[104] She's a very sweet girl, \s[106]if a messy one."
+		}
+		elseif "elko" _in_ reference0
+		{
+			if askedaboutelko == 0
+			{
+				askedaboutelko = 1
+				love += 4
+				knowaboutfamily = 1
+			}
+			--
+			if askedaboutcambria == 1
+			{
+				"\b2\_b[img\P14Elko.png,centerx,10]\n\n\n\n\n\n\n\n\n\n\n\0\s[0]Elko is anCambria's best friend,"
+			}
+			else
+			{
+				"\b2\_b[img\P14Elko.png,centerx,10]\n\n\n\n\n\n\n\n\n\n\n\0\s[0]Elko is a close friend of one of my kids,"
+			}
+			--
+			"\w4 and is basically family.\w8\w8\s[1010] She comes over to visit a lot, and we love to have her around.\w8\w8\n\n\s[202]She's got spunk, that's for sure.\w8\s[1010] I think she's planning to become a nurse in the hopes of working alongside "
+			--
+			if askedaboutcambria == 1
+			{
+				"anMCambria"
+			}
+			else
+			{
+				"my daughter"
+			}
+			--
+			" after college."
+		}
+		--
+		"\n\n" //No matter which option is first, they'll be spaced properly
+		--
+		if "Familymenu" _in_ reference0 //As mentioned above, if you're accessing anchor text from the family menu, this'll let you go back to it
+		{
+			"\![*]\q[Ask about someone else,OnFamilyMenu]\n"
+		}
+		--
+		"\![*]\q[I'm done,cancelnodialogue]" //Either way, here's a cancel button that leads to nothing. This is also here to prevent anchor text from being overwritten by random text... I may or may not make it so that this doesn't time out.
+		
+	}
+}
